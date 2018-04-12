@@ -8,7 +8,6 @@
 
 ## 数据结构与算法
 - [数据结构与算法-排序算法原理和实现](https://github.com/xwchris/blog/issues/7)
-- []
 
 ## YDKJS
 - [YDKJS-作用域和闭包](https://github.com/xwchris/blog/issues/9)
