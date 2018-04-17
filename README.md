@@ -16,3 +16,4 @@
 ## 随身笔记
 - [随身笔记-CSS常见问题及解决办法](https://github.com/xwchris/blog/issues/8)
 - [随身笔记-JS查漏补缺](https://github.com/xwchris/blog/issues/11)
+- [随身笔记-前端兼容性问题解决](https://github.com/xwchris/blog/issues/12)
