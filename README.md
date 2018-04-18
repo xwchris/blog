@@ -6,6 +6,10 @@
 - [基础知识-ECMAScript6 II](https://github.com/xwchris/blog/issues/5)
 - [基础知识-CSS](https://github.com/xwchris/blog/issues/6)
 
+## 深入理解
+- [深入理解-CSS内联元素-字体相关概念](https://github.com/xwchris/blog/issues/13)
+- [深入理解-Generator](https://github.com/xwchris/blog/issues/14)
+
 ## 数据结构与算法
 - [数据结构与算法-排序算法原理和实现](https://github.com/xwchris/blog/issues/7)
 
