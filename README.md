@@ -1,6 +1,7 @@
 ## 文章列表
+
 ### 手动实现
-## React实现
+#### React实现
 - [介绍和准备](https://github.com/xwchris/blog/issues/41)
 
 ### 深入理解
