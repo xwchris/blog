@@ -1,11 +1,7 @@
-## What's this
-This is my own tech blog's backup of [xwchris.me](https://xwchris.me)
-
-## How to work
-This blog repo sync with the [site](https://xwchris.me) by github api, you can read them in the issue page or in the [site](https://xwchris.me). Attention, DO NOT CLOSE THE ISSUE!!!
-
-## Contents
-This is the list of the articles
+## 文章列表
+### 手动实现
+## React实现
+- [介绍和准备](https://github.com/xwchris/blog/issues/41)
 
 ### 深入理解
 - [CSS内联元素之font-size](https://github.com/xwchris/blog/issues/13)
