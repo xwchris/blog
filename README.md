@@ -3,6 +3,7 @@
 ### 手动实现
 #### React实现
 - [介绍和准备](https://github.com/xwchris/blog/issues/41)
+- [节点创建和渲染](https://github.com/xwchris/blog/issues/42)
 
 ### 深入理解
 - [CSS内联元素之font-size](https://github.com/xwchris/blog/issues/13)
