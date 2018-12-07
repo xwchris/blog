@@ -16,9 +16,9 @@
 ### 前端框架
 - React基础及原理
   - [React实现-介绍和准备](https://github.com/xwchris/blog/issues/41)
-  - [React实现-节点创建和渲染](https://github.com/xwchris/blog/issues/42)
+  - [React实现-节点创建和渲染](https://github.com/xwchris/blog/issues/42)
   - [React实现-组件渲染和setState](https://github.com/xwchris/blog/issues/43)
-  - [React实现-Diff算法](https://github.com/xwchris/blog/issues/44)
+  - [React实现-Diff算法](https://github.com/xwchris/blog/issues/44)
 
 - React-Router基础及前端路由原理
   - [单页面路由原理及实现](https://github.com/xwchris/blog/issues/52)
