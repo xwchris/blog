@@ -4,8 +4,8 @@
 
 ### 前端框架
 - deep in react
-  - [Diff算法]:bug:
-  - [Fiber算法]:bug:
+  - [Diff算法]():bug:
+  - [Fiber算法]():bug:
 
 - React-Router基础及前端路由原理
   - [单页面路由原理及实现](https://github.com/xwchris/blog/issues/52)
