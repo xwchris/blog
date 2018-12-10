@@ -2,11 +2,6 @@
 
 ## 前端
 
-### 基础知识
-- CSS基础知识
-  - [CSS](https://github.com/xwchris/blog/issues/6)
-- HTML基础知识🐱
-
 ### 前端框架
 - React基础及原理
   - [React实现-介绍和准备](https://github.com/xwchris/blog/issues/41)
