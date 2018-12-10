@@ -7,12 +7,6 @@
   - [Diff算法]():bug:
   - [Fiber算法]():bug:
 
-- React-Router基础及前端路由原理
-  - [单页面路由原理及实现](https://github.com/xwchris/blog/issues/52)
-
-- Redux基础及原理
-  - [深入理解-Redux](https://github.com/xwchris/blog/issues/67)
-
 ### 性能优化
 - 优化概览
   - [webkit浏览器渲染过程](https://github.com/xwchris/blog/issues/62)
