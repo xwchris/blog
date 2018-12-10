@@ -3,9 +3,6 @@
 ## 前端
 
 ### 基础知识
-- ES6基础知识
-  - [EMACScript6 I](https://github.com/xwchris/blog/issues/4)
-  - [EMACScript6 II](https://github.com/xwchris/blog/issues/5)
 - CSS基础知识
   - [CSS](https://github.com/xwchris/blog/issues/6)
 - HTML基础知识🐱
