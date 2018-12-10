@@ -8,7 +8,7 @@
   
 
 ### 性能优化
-- 性能优化概览:bug
+- 性能优化概览:bug:
 
 - 优化概览
   - [webkit浏览器渲染过程](https://github.com/xwchris/blog/issues/62)
@@ -20,7 +20,7 @@
 ## 网络
 
 ### 网络基础:
-- UDP&TCP:bug
+- UDP&TCP:bug:
 - HTTP&HTTPS&HTTP2:bug:
 
 - [HTTPS基础及原理](https://github.com/xwchris/blog/issues/17)
