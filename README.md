@@ -17,8 +17,5 @@
 
 ## 网络
 
-### 网络基础:
-- UDP&TCP:bug:
-- HTTP&HTTPS&HTTP2:bug:
-
-- [HTTPS基础及原理](https://github.com/xwchris/blog/issues/17)
+### 网络基础
+- [TCP&HTTP](https://github.com/xwchris/blog/issues/17)
