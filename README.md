@@ -4,6 +4,7 @@
 ## 框架
 - [React Diff算法]():bug:
 - [React Fiber算法]():bug:
+- [Redux实现](https://github.com/xwchris/blog/issues/67)
   
 ## 性能优化
 - [前端性能优化](https://github.com/xwchris/blog/issues/72)
