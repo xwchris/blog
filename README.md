@@ -13,14 +13,7 @@
   
 
 ### 性能优化
-- 性能优化概览:bug:
-
-- 优化概览
-  - [前端性能优化](https://github.com/xwchris/blog/issues/72)
-- [图片优化](https://github.com/xwchris/blog/issues/63)
-- 浏览器缓存
-  - [HTTP缓存](https://github.com/xwchris/blog/issues/20)
-  - [前端存储技术](https://github.com/xwchris/blog/issues/50)
+- [前端性能优化](https://github.com/xwchris/blog/issues/72)
 
 ## 网络
 
