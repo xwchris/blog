@@ -16,7 +16,7 @@
 - 性能优化概览:bug:
 
 - 优化概览
-  - [webkit浏览器渲染过程](https://github.com/xwchris/blog/issues/62)
+  - [前端性能优化](https://github.com/xwchris/blog/issues/72)
 - [图片优化](https://github.com/xwchris/blog/issues/63)
 - 浏览器缓存
   - [HTTP缓存](https://github.com/xwchris/blog/issues/20)
