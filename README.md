@@ -1,6 +1,6 @@
 # 目录
 ## 基础
-- [转义&编码]():bug:
+- [转义&编码](https://github.com/xwchris/blog/issues/68)
 
 ## 前端
 
