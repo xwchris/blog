@@ -17,7 +17,7 @@ js中对象创建除了使用字面量和`Object.create`，最常用的还是`ne
 - 绑定this
 - 返回该对象（如果构造函数本身有返回值，则返回那个值）
 
-使用代码实现
+使用代码来模拟`new`
 ```javascript
 function createObject(Con, ...args) {
  var t = {};
@@ -28,8 +28,33 @@ function createObject(Con, ...args) {
 }
 ```
 
-原型
-构造函数
+II. 原型
+js中的继承使用的是原型链的方式。js中所有对象都有原型，除了`Object.prototype`。
+
+获取一个对象的原型对象可以使用：
+- `Object.getPrototypeOf()`该方法只读
+- 对象的`__proto__`属性（部分浏览器实现）
+
+`a instanceOf b`的原理就是在a的原型链中寻找`b.prototype`。如果存在则返回`true`，否则返回`false`。
+用代码来模拟`instanceOf`
+```javascript
+function customInstanceOf(ins, Con) {
+ var target = Con.prototype;
+ var proto = ins.__proto__;
+ while(true) {
+  if (proto === null) {
+   return false;
+  }
+  
+  if (proto === target) {
+   return true;
+  }
+  
+  proto = proto.__proto__;
+ }
+}
+```
+
 执行上下文
  - 变量对象
  - 作用域链
