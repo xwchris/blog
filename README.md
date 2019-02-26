@@ -3,22 +3,39 @@
 
 ## 🍎BASIC
 
+### JAVACRIPT
+#### 核心
+#### 对象拷贝
+#### 继承方式
+#### 类型
+#### 模块化
+#### AST
+#### BABEL编译过程
+#### 防抖和节流
+#### ES6/ES7
+
+### CSS
+#### 基础知识
+#### 技巧方面
+
 ## 🍐BROWSER
+### 组成部分
+### 渲染
+### 核心机制
+### 跨标签页通信
+### 内存泄漏
+### 安全
 
 ## 🍑NETWORK
+### HTTP
+#### 分类
+#### 常见状态码
+#### HTTP缓存
 
-## 框架
-- [React Diff算法]():bug:
-- [React Fiber算法]():bug:
-- [Redux实现](https://github.com/xwchris/blog/issues/67)
-  
-## 性能优化
-- [前端性能优化](https://github.com/xwchris/blog/issues/72)
+### 跨域
+#### CORS
+#### JSONP
 
-## 网络
-- [TCP&HTTP](https://github.com/xwchris/blog/issues/17)
-- [CORS跨域](https://github.com/xwchris/blog/issues/30)
+### WEBSOCKET
 
-## 其他
-- [WEB安全](https://github.com/xwchris/blog/issues/55)
-- [移动端适配方案]():bug:
+## 🍒OPTIMIZATION
