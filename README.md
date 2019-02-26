@@ -1,5 +1,11 @@
-## 基础
-- [编码&转义](https://github.com/xwchris/blog/issues/68)
+# Blog
+本blog主要用于记录和总结前端常用知识和相关内容的深入理解，帮助自己进行前端知识体系的构建，形成技术沉淀。也方便今后查询。如果很幸运的对你有一点帮助，那我真的很开心😊。
+
+## 🍎BASIC
+
+## 🍐BROWSER
+
+## 🍑NETWORK
 
 ## 框架
 - [React Diff算法]():bug:
