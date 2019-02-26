@@ -6,24 +6,34 @@
 ### JAVACRIPT
 
 #### 核心
- 
- **PART-I 对象**
+I. 对象
 
- 对象是最重要也是最常见的部分，了解了js中对象基本上也就了解了js。
+对象是js中最常见的也是最重要的部分。
 
- js中对象创建除了使用字面量和`Object.create`，最常用的还是`new`。使用`new`创建对象的过程如下:
+js中对象创建除了使用字面量和`Object.create`，最常用的还是`new`。使用`new`创建对象的基本过程如下:
 
- - 生成一个新对象
- - obj.__proto = Can.prototype
- - 绑定this
- - 返回该对象（如果构造函数本身有返回值，则返回那个值）
+- 生成一个新对象
+- `obj.__proto = Con.prototype`
+- 绑定this
+- 返回该对象（如果构造函数本身有返回值，则返回那个值）
 
- 原型
- 构造函数
- 执行上下文
-  - 变量对象
-  - 作用域链
-  - This
+使用代码实现
+```javascript
+function createObject(Con, ...args) {
+ var t = {};
+ t.__proto__ = Con.prototype;
+ t.constructor = Con;
+ Con.apply(t, args);
+ return t;
+}
+```
+
+原型
+构造函数
+执行上下文
+ - 变量对象
+ - 作用域链
+ - This
 
 
 #### 对象拷贝
