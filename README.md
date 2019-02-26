@@ -28,7 +28,9 @@ function createObject(Con, ...args) {
 }
 ```
 
+
 II. 原型
+
 js中的继承使用的是原型链的方式。js中所有对象都有原型，除了`Object.prototype`。
 
 获取一个对象的原型对象可以使用：
@@ -55,7 +57,14 @@ function customInstanceOf(ins, Con) {
 }
 ```
 
-执行上下文
+
+III. 执行上下文（Excution Context 简称 EC）
+
+EC可以理解为js代码的执行环境，它主要分为：全局执行上下文，函数执行上下文，eval执行上下文。代码在执行过程中，每遇到一个EC就将其入栈，该栈称为EC栈。
+
+EC栈如图所示：
+
+
  - 变量对象
  - 作用域链
  - This
@@ -65,7 +74,7 @@ function customInstanceOf(ins, Con) {
 #### 继承方式
 #### 类型
 #### 模块化
-#### AST
+#### AS
 #### BABEL编译过程
 #### 防抖和节流
 #### ES6/ES7
