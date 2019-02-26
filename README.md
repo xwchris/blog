@@ -87,7 +87,7 @@ var x = 10;
 })()
 ```
 
-它的作用域量类似于如下表示
+它的作用域链类似于如下表示
 
 ![scope-chain](https://user-images.githubusercontent.com/13817144/53414899-c7579300-3a0a-11e9-8e1f-fbfe05bb2f7e.png)
 
