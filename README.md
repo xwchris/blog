@@ -63,11 +63,48 @@ III. 执行上下文（Excution Context 简称 EC）
 EC可以理解为js代码的执行环境，它主要分为：全局执行上下文，函数执行上下文，eval执行上下文。代码在执行过程中，每遇到一个EC就将其入栈，该栈称为EC栈。
 
 EC栈如图所示：
+![ec-stack](https://user-images.githubusercontent.com/13817144/53413640-7003f380-3a07-11e9-8837-cffb63a24351.png)
+
+说完了执行上下文栈，我们来说下执行上下文，执行上下文由三部分组成：变量对象（Variable Object）、作用域和This。
+
+执行上下文的执行过程分为两个阶段。首先是创建阶段，这个阶段会创建变量对象（并未赋值）、创建作用域和创建this。创建阶段完成后，进入到激活阶段，激活阶段会按顺序执行代码，为变量赋值并执行各种操作。
+
+在说变量对象之前，先来说说什么是作用域。代码在执行的过程中的变量到底是如何寻找的？实际上这些值都是从作用域链中取出来的，作用域链是一种类似于链式的实现，我们说过每个执行上下文都有一个变量对象，变量对象实际上存储的就是各执行上下文中的变量。作用域链将这些变量对象以类似于`__parent__`之类的属性串起来，访问变量的过程就是在链上查找值的过程。
+
+来看一个例子，对于下面的代码
+```javascript
+var x = 10;
+
+(function foo() {
+ var y = 20;
+ 
+ (function bar() {
+  var z = 30;
+  
+  console.log(x + y + z);
+ })()
+})()
+```
+
+它的作用域量类似于如下表示
+![scope-chain](https://user-images.githubusercontent.com/13817144/53414899-c7579300-3a0a-11e9-8e1f-fbfe05bb2f7e.png)
+
+变量对象包含了执行上下文中各变量声明（注意创建阶段是不为变量赋值的都为undefined）以及函数声明（注意不包括函数表达式）。这也能够解释hosting函数提升的现象。当一个函数被调用的时候，会创建一个特殊的变量对象，称之为活动对象（Activation Object），AO与VO不同的地方在于AO除了包含变量，函数声明，它同时还包括函数的各参数值以及`arguments`。
+
+来看一个例子，对于如下代码
+```javascript
+function (x, y) {
+ var z = 30;
+ function bar() {}
+ (function baz() {}); // 表达式 不出现在VO/AO中
+}
+```
+
+它的AO对象如下表示
+![activation-object](https://user-images.githubusercontent.com/13817144/53415167-74321000-3a0b-11e9-913c-254744c80a5d.png)
 
 
- - 变量对象
- - 作用域链
- - This
+最后来说下This
 
 
 #### 对象拷贝
