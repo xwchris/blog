@@ -1,3 +1,7 @@
+![last commit](https://img.shields.io/github/last-commit/xwchris/collection.svg?style=flat)
+![xwchris](https://img.shields.io/maintenance/xwchris/2019.svg?style=flat)
+![issues](https://img.shields.io/github/issues/xwchris/collection.svg?style=flat)
+
 # Blog
 本blog主要用于记录和总结前端常用知识和相关内容的深入理解，帮助自己进行前端知识体系的构建，形成技术沉淀。也方便今后查询。如果很幸运的对你有一点帮助，那我真的很开心😊。
 
