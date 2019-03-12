@@ -111,10 +111,167 @@ function (x, y) {
 ![activation-object](https://user-images.githubusercontent.com/13817144/53415167-74321000-3a0b-11e9-913c-254744c80a5d.png)
 
 
-最后来说下This，`this`实际上是与执行上下文相关的一个属性，它不可以被赋值。它是由调用者提供，并与调用写法相关的。那么`this`的值到底是什么哪？在global中`this`就是global本身。当`This`在函数上下文中的时候，分为几种情况。
+最后来说下This，`this`实际上是与执行上下文相关的一个属性，它不可以被赋值。它是由调用者提供，并与调用写法相关的。那么`this`的值到底是什么哪？在global中`this`就是global本身。当`This`在函数上下文中的时候，它的值取决于函数调用括号左边的值，有为几种情况。
+
+
+1. 该值是Reference类型的时候，this就是base
+2. 该值是其他类型的时候，this是null，自动转为global
+3. 该值Refernce类型当时base是AO的时候，this也是null，自动转为global
+
+Reference类型类似于下面的这种形式
+```
+'use strict';
+ 
+// Access foo.
+foo;
+ 
+// Reference for `foo`.
+const fooReference = {
+  base: global,
+  propertyName: 'foo',
+  strict: true,
+};
+```
+
+这部分更多详细解释请参考[这里](http://dmitrysoshnikov.com/ecmascript/chapter-3-this/#-reference-type)
+
 
 #### 对象拷贝
+
+I. 浅拷贝
+
+对象的浅拷贝可以使用`Object.assign`方法和`扩展运算符...`来实现
+
+
+II. 深拷贝
+
+对象的深拷贝方法有
+
+1. 使用`JSON.parse(JSON.stringify(obj))`的方式
+2. 使用循环赋值的方法进行浅拷贝
+
+第一种方法使用起来很简单，但它的缺点是对于无法JSON的属性如函数、Symbol等会被忽略，并且对于循环引用的对象会发生错误。
+
+第二种方法的代码实现如下
+
+```javascript
+function deepCopy(p, c) {
+	c = c || {};
+	for (var i in p) {
+		if (typeof p[i] === 'object') {
+			c[i] = p[i].constructor === Array ? [] : {};
+			deepCopy(p[i], c[i]);
+		} else {
+			c[i] = p[i];
+		}
+	}
+	return c;
+}
+```
+
+
 #### 继承方式
+
+继承在javascript是利用原型链的方式实现的，在es6中加入了`class/extends`的方式也可以实现继承。除了es6中`class/extends`的方式我们来看下原型链的继承方式。
+
+I. 构造函数继承
+
+加入我们有`Animal`构造函数和`Dog`构造函数，现在来实现它们的继承
+
+```javascript
+function Animal() {
+ this.type = 'animal';
+}
+
+function Dog(name) {
+ this.name = name;
+}
+```
+
+第一种方案利用`apply`进行构造函数绑定
+
+```javascript
+function Dog(name) {
+ Animal.apply(this, arguments)
+ //...
+}
+
+var dog = new Dog('hei');
+
+console.log(dog.type); // output: animal
+```
+
+第二种方案利用`prototype`属性进行原型链的继承
+
+```javascript
+Dog.prototype = new Animal();
+Dog.prototype.constuctor = Dog;
+
+var dog = new Dog('hei');
+
+console.log(dog.type); // output: animal
+```
+
+第三种方案利用中间空对象进行继承
+
+```javascript
+// 为了不构建对象直接进行继承，将属性写入prototype
+function Animal() {}
+Animal.prototype.type = 'animal'
+
+function Dog(name) {
+ this.name = name;
+}
+
+function extend(Parent, Child) {
+ // 如果Child.prototype直接继承Parent.prototype两者指向同一个会有问题
+ // 用一个空的中间对象解决同一个对象的问题，并且不会占用太多空间
+ var F = function() {};
+ F.prototype = Parent.prototype;
+ Child.prototype = new F();
+ Child.prototype.constructor = Child;
+}
+
+extend(Animal, Dog);
+var dog = new Dog('hei');
+
+console.log(dog.type); // output: animal
+```
+
+这部分更多详细解释请参考[这里](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html)
+
+II. 非构造函数继承
+
+对于两个对象字面量，没有构造函数它们实现继承可以有两种方案，例如现在有这两个对象
+
+```javascript
+var animal = {
+ type: 'animal'
+}
+
+var dog = {
+ name: 'hei'
+}
+```
+
+第一种是利用`prototype`和中介对象
+
+```
+function object(o) {
+ function F() {}
+ F.prototype = o;
+ return new F();
+}
+
+var dog = object(animal);
+dog.name = 'hei'
+```
+
+第二种就是将所有属性进行拷贝，拷贝分类浅拷贝和深拷贝，可以参考上面的拷贝部分
+
+这部分更多详细解释请参考[这里](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance_continued.html)
+
+
 #### 类型
 #### 模块化
 #### AS
