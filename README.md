@@ -318,7 +318,7 @@ javascript中常见的模块化方式有三种，分别是
 
 #### AST和Babel
 
-AST全称Abrstract Syntax Tree（虚拟语法树），是对代码语法分析后得出的一颗语法树。
+AST全称Abrstract Syntax Tree（虚拟语法树），是对代码语法分析后得出的一棵语法树。
 
 生成它的主要过程包括分词和解析（词法分析和语法分析），最终生成语法树。可以用该语法树分析代码，来做成各种工具如代码提示，代码格式化、代码转换等等很多应用
 
@@ -332,8 +332,91 @@ Babel就是AST的一种应用，Babel的过程是`parse => transform => generate
 
 #### 防抖和节流
 
+防抖和节流一般用于频繁触发函数的优化，减少不必要的开销。
 
-#### ES6/ES7
+防抖是对于频繁触发的函数，合并成一次执行，常用于用户输入事件
+
+```javascript
+function debounce(fn, interval) {
+  var timer = null;
+
+  return function() {
+    var context = this;
+    var args = arguments;
+    
+    clearTimeout(timer);
+    
+    timer = setTimeout(function() {
+      fn.apply(context, args);
+    }, interval);
+  }
+}
+```
+
+节流是对于频繁触发的函数，控制函数以一定的速率执行，常用于控制滚动事件触发。下面是代码实现：
+
+```javascript
+function throttle(fn, interval) {
+  var last = 0, timer = null;
+  
+  return function() {
+    var context = this;
+    var args = arguments;
+    var now = Date.now();
+    
+    if (now - last < interval) {
+      // 保证最后一次触发的也执行
+      clearTimeout(timer);
+      timer = setTimeout(function() {
+      	fn.apply(context, args);
+      }, interval)
+    } else {
+      last = now;
+      fn.apply(context, args);
+    }
+  }
+}
+```
+
+#### ES6
+
+ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
+这里主要说下ES6中的`Map`、`WeakMap`、`Set`和`WeakSet`
+
+I. Set和WeakSet
+
+`Set`与数组相似，但是`Set`中不能有重复的数值，它的键与它的值相同。可以使用数组进行初始化，同时可以利用`Array.from`函数将`Set`转为数组。
+
+它常用的方法和属性有：
+
+```javascript
+// 属性
+size // 获取set长度
+
+// 方法
+
+// 操作方法
+add() // 添加
+delete() // 删除
+clear() // 清空
+
+// 遍历方法
+keys() // 获取所有键值
+values() // 获取所有值
+entries() // 获取所有键值对
+forEach() // 遍历
+
+// 其他方法
+has() // 判断是否有某个值
+```
+
+`WeakSet`相比于`Set`它的值只能是对象，并且是弱引用的（即没有其他对象引用，该对象就会被回收，不考虑是否在WeakSet中），同时不可遍历，因此它只有`add`,`delete`和`has`方法
+
+II. Map和WeakMap
+
+`Map`与对象相比它可以用对象作为键值，而对象只能用字符串做键值。它构造函数接收一个可遍历对象（如数组，`Set`等），该对象的成员是一个个表示键值对的数组（如`[['name': 'xiaowei],['age', 15]]`）。`Map`与`Set`方法大体相同，不同的是`Map`没有`add`方法，相应的它有`get`和`set`。
+
+`WeakMap`与`WeakSet`概念类似，只有`get`,`set`，`delete`和`has`方法
 
 ### CSS
 #### 基础知识
