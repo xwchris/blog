@@ -273,10 +273,66 @@ dog.name = 'hei'
 
 
 #### 类型
+
+I. 类型分类
+
+Javascript六大基本类型
+```javascript
+Null, Undefined, String, Number, Boolean, Symbol
+```
+
+引用类型为`Object`
+
+II. 类型判断
+
+判断javascript中的基本类型除了`null`其他五种都可以使用`typeof`运算符。由于`typeof null === 'obejct'`，我们不能直接判断，对于null我们可以利用`String(null) === 'null'`来判断null
+
+javascript中的内置类型如`Array`、`Date`、`Error`和`RegExp`都可以使用`Object.prototype.toString.call`来判断类型，该函数的返回值类似于`[object Array]`的形式
+
+III. 类型转化
+
+使用操作符操作不同类型的变量，两个变量会转换为同一个类型，基本原则如下
+
+- 对于`\`、`*`、`%`、`-`等操作符，一律转为数字
+- `Boolean/Null`类型转为相应的数字， `undefined`和对象会转为`NaN`，数组转数字会将第一项的值转换为数字，如果没有则为0
+- 对于`+`操作符，有一个字符串都转为字符串
+- 对象类型优先调用`valueOf`然后是`toString`
+
+
 #### 模块化
-#### AS
-#### BABEL编译过程
+
+javascript中常见的模块化方式有三种，分别是
+
+- es modules
+- commonjs
+- amd
+
+`es module`使用`import/export/export default`的语法，它是静态的
+
+`commonjs`使用`require/module.exports`的语法，它是动态的，常用于同步加载（用于nodejs中）
+
+`amd`使用`require/define`的语法，它是动态的，常用于异步加载（如requirejs）
+
+这部分更多详细解释请参考[这里](https://medium.com/computed-comparisons/commonjs-vs-amd-vs-requirejs-vs-es6-modules-2e814b114a0b)
+
+
+#### AST和Babel
+
+AST全称Abrstract Syntax Tree（虚拟语法树），是对代码语法分析后得出的一颗语法树。
+
+生成它的主要过程包括分词和解析（词法分析和语法分析），最终生成语法树。可以用该语法树分析代码，来做成各种工具如代码提示，代码格式化、代码转换等等很多应用
+
+Babel就是AST的一种应用，Babel的过程是`parse => transform => generate`，详细步骤：
+
+1. 使用[babel-parser](https://github.com/babel/babel/tree/master/packages/babel-parser)将es6/es7等语法解析成AST
+2. 使用[babel-traverse](https://github.com/babel/babel/tree/master/packages/babel-traverse)对AST进行遍历转义，形成新的AST
+3. 使用[babel-generator](https://github.com/babel/babel/tree/master/packages/babel-generator)将新的AST生成代码
+
+
+
 #### 防抖和节流
+
+
 #### ES6/ES7
 
 ### CSS
