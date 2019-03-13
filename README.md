@@ -9,6 +9,8 @@
 
 ### JAVACRIPT
 
+概要：核心 -- 对象拷贝 -- 继承 -- 类型 -- 模块化 -- AST/Babel -- 防抖/节流 -- Map/Set
+
 #### 核心
 I. 对象
 
@@ -321,7 +323,7 @@ javascript中常见的模块化方式有三种，分别是
 这部分更多详细解释请参考[这里](https://medium.com/computed-comparisons/commonjs-vs-amd-vs-requirejs-vs-es6-modules-2e814b114a0b)
 
 
-#### AST和Babel
+#### AST/Babel
 
 AST全称Abrstract Syntax Tree（虚拟语法树），是对代码语法分析后得出的一棵语法树。
 
@@ -335,7 +337,7 @@ Babel就是AST的一种应用，Babel的过程是`parse => transform => generate
 
 
 
-#### 防抖和节流
+#### 防抖/节流
 
 防抖和节流一般用于频繁触发函数的优化，减少不必要的开销。
 
@@ -383,9 +385,8 @@ function throttle(fn, interval) {
 }
 ```
 
-#### ES6
+#### Map/Set
 
-ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 这里主要说下ES6中的`Map`、`WeakMap`、`Set`和`WeakSet`
 
 I. Set和WeakSet
@@ -422,6 +423,8 @@ II. Map和WeakMap
 `Map`与对象相比它可以用对象作为键值，而对象只能用字符串做键值。它构造函数接收一个可遍历对象（如数组，`Set`等），该对象的成员是一个个表示键值对的数组（如`[['name': 'xiaowei],['age', 15]]`）。`Map`与`Set`方法大体相同，不同的是`Map`没有`add`方法，相应的它有`get`和`set`。
 
 `WeakMap`与`WeakSet`概念类似，只有`get`,`set`，`delete`和`has`方法
+
+ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 
 ### CSS
 #### 基础知识
