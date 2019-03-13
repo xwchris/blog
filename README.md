@@ -256,7 +256,7 @@ var dog = {
 
 第一种是利用`prototype`和中介对象
 
-```
+```javascript
 function object(o) {
  function F() {}
  F.prototype = o;
@@ -276,12 +276,17 @@ dog.name = 'hei'
 
 I. 类型分类
 
-Javascript六大基本类型
+基本类型
+
 ```javascript
-Null, Undefined, String, Number, Boolean, Symbol
+// Null, Undefined, String, Number, Boolean, Symbol
 ```
 
-引用类型为`Object`
+引用类型为
+
+```javascript
+// Object
+```
 
 II. 类型判断
 
