@@ -3,13 +3,11 @@
 ![issues](https://img.shields.io/github/issues/xwchris/collection.svg?style=flat)
 
 # Blog
-本blog主要用于记录和总结前端常用知识和相关内容的深入理解，帮助自己进行前端知识体系的构建，形成技术沉淀。也方便今后查询。如果很幸运的对你有一点帮助，那我真的很开心😊。
+本blog主要用于记录和总结前端常用知识和相关内容的深入理解，帮助自己进行前端知识体系的构建，形成技术沉淀
 
 ## 🍎BASIC
 
 ### JAVACRIPT
-
-概要：核心 -- 对象拷贝 -- 继承 -- 类型 -- 模块化 -- AST/Babel -- 防抖/节流 -- Map/Set
 
 #### 核心
 I. 对象
@@ -53,11 +51,11 @@ function customInstanceOf(ins, Con) {
   if (proto === null) {
    return false;
   }
-  
+
   if (proto === target) {
    return true;
   }
-  
+
   proto = proto.__proto__;
  }
 }
@@ -84,10 +82,10 @@ var x = 10;
 
 (function foo() {
  var y = 20;
- 
+
  (function bar() {
   var z = 30;
-  
+
   console.log(x + y + z);
  })()
 })()
@@ -123,10 +121,10 @@ function (x, y) {
 Reference类型类似于下面的这种形式
 ```
 'use strict';
- 
+
 // Access foo.
 foo;
- 
+
 // Reference for `foo`.
 const fooReference = {
   base: global,
@@ -350,9 +348,9 @@ function debounce(fn, interval) {
   return function() {
     var context = this;
     var args = arguments;
-    
+
     clearTimeout(timer);
-    
+
     timer = setTimeout(function() {
       fn.apply(context, args);
     }, interval);
@@ -365,12 +363,12 @@ function debounce(fn, interval) {
 ```javascript
 function throttle(fn, interval) {
   var last = 0, timer = null;
-  
+
   return function() {
     var context = this;
     var args = arguments;
     var now = Date.now();
-    
+
     if (now - last < interval) {
       // 保证最后一次触发的也执行
       clearTimeout(timer);
@@ -427,7 +425,69 @@ II. Map和WeakMap
 ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 
 ### CSS
+
 #### 基础知识
+
+I. 盒模型
+
+盒模型是html元素布局模型，盒模型由以下几部分组成
+
+![css盒模型](https://user-images.githubusercontent.com/13817144/54353528-35e55380-468f-11e9-872a-18a5fa78bcd1.png)
+
+盒模型分为两类：标准盒模型和IE盒模型，切换类别可以使用css属性`box-sizing`。默认为标准盒模型`content-box`，IE盒模型用`border-box`表示。
+
+
+II. BFC
+
+BFC全称Block Formating Context（块级格式化上下文），是页面中一块独立的渲染区域，并且有一套渲染规则，它决定了子元素如何定位，以及和其他元素的关系和相互作用。
+
+形成BFC需要满足以下几个条件：
+
+- body根元素
+- 绝对定位的元素（position absolute/fixed）
+- display为`inline-block`、`flex`、`table-cell`的元素
+- overflow不为`visible`
+
+BFC的特点主要是独立，不影响其他区域，也不会被其他区域所影响。
+
+
+III. 层叠
+
+层叠是HTML元素的三维概念，所有元素都在面朝屏幕的z轴上延伸。
+
+
+要理解层叠，首先要理解层叠上下文，层叠上下文是一个独立的层叠区域，它比普通元素的层叠顺序高。
+
+形成层叠上下文需要满足以下几个条件：
+
+- 根元素html
+- position为`absolute`或`fixed`并搭配z-index（值不能为auto）
+- position为`fixed`或`sticky`
+- opacity比1小
+- 有`transform`、`perspective`、`filter`、`clip-path`等
+- flex元素的子元素，并且子元素`z-index`值不为`auto`
+
+元素层叠原则是（在同一个层叠上下文中）
+
+1. 后面的元素高于前面的元素
+2. z-index大的高于z-index低的（z-index只对形成层叠上下文的元素有效）
+
+具体层叠规则看下图
+![层叠规则](https://user-images.githubusercontent.com/13817144/54355034-033d5a00-4693-11e9-904c-94aa5c85beea.png)
+
+
+IV. 选择器
+
+选择器的优先级如下：
+
+```javascript
+// !important > 内联样式 > ID原则器 > Class选择器 > 标签选择器 > 继承属性 > 浏览器默认属性
+```
+
+css中选择器的解析是从右向左的，同时要注意通配选择符`*`和关系选择符对优先级没有影响
+
+V. 动画
+
 #### 技巧方面
 
 ## 🍐BROWSER
