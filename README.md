@@ -10,8 +10,8 @@
 <details>
 <summary>JS-核心部分</summary>
 <p>
- 
- 
+
+
 I. 对象
 
 对象是js中最常见的也是最重要的部分。
@@ -142,6 +142,8 @@ const fooReference = {
 <details>
 <summary>JS-对象拷贝</summary>
 <p>
+
+
 I. 浅拷贝
 
 对象的浅拷贝可以使用`Object.assign`方法和`扩展运算符...`来实现
@@ -179,6 +181,8 @@ function deepCopy(p, c) {
 <details>
 <summary>JS-继承</summary>
 <p>
+
+
 继承在javascript是利用原型链的方式实现的，在es6中加入了`class/extends`的方式也可以实现继承。除了es6中`class/extends`的方式我们来看下原型链的继承方式。
 
 I. 构造函数继承
@@ -283,6 +287,8 @@ dog.name = 'hei'
 <details>
 <summary>JS-类型</summary>
 <p>
+
+
 I. 类型分类
 
 基本类型
@@ -317,6 +323,8 @@ III. 类型转化
 <details>
 <summary>JS-模块化</summary>
 <p>
+
+
 javascript中常见的模块化方式有三种，分别是
 
 - es modules
@@ -337,6 +345,8 @@ javascript中常见的模块化方式有三种，分别是
 <details>
 <summary>AST/BABEL</summary>
 <p>
+
+
 AST全称Abrstract Syntax Tree（虚拟语法树），是对代码语法分析后得出的一棵语法树。
 
 生成它的主要过程包括分词和解析（词法分析和语法分析），最终生成语法树。可以用该语法树分析代码，来做成各种工具如代码提示，代码格式化、代码转换等等很多应用
@@ -352,6 +362,8 @@ Babel就是AST的一种应用，Babel的过程是`parse => transform => generate
 <details>
 <summary>防抖/节流</summary>
 <p>
+
+
 防抖和节流一般用于频繁触发函数的优化，减少不必要的开销。
 
 防抖是对于频繁触发的函数，合并成一次执行，常用于用户输入事件
@@ -404,6 +416,8 @@ function throttle(fn, interval) {
 <details>
 <summary>Map/Set</summary>
 <p>
+
+
 这里主要说下ES6中的`Map`、`WeakMap`、`Set`和`WeakSet`
 
 I. Set和WeakSet
@@ -449,6 +463,8 @@ ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 <details>
 <summary>CSS-盒模型</summary>
 <p>
+
+
 盒模型是html元素布局模型，盒模型由以下几部分组成
 
 ![css盒模型](https://user-images.githubusercontent.com/13817144/54353528-35e55380-468f-11e9-872a-18a5fa78bcd1.png)
@@ -461,6 +477,8 @@ ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 <details>
 <summary>CSS-BFC</summary>
 <p>
+
+
 BFC全称Block Formating Context（块级格式化上下文），是页面中一块独立的渲染区域，并且有一套渲染规则，它决定了子元素如何定位，以及和其他元素的关系和相互作用。
 
 形成BFC需要满足以下几个条件：
@@ -478,8 +496,9 @@ BFC的特点主要是独立，不影响其他区域，也不会被其他区域�
 <details>
 <summary>CSS-层叠</summary>
 <p>
-层叠是HTML元素的三维概念，所有元素都在面朝屏幕的z轴上延伸。
 
+
+层叠是HTML元素的三维概念，所有元素都在面朝屏幕的z轴上延伸。
 
 要理解层叠，首先要理解层叠上下文，层叠上下文是一个独立的层叠区域，它比普通元素的层叠顺序高。
 
@@ -508,6 +527,8 @@ BFC的特点主要是独立，不影响其他区域，也不会被其他区域�
 <details>
 <summary>CSS-选择器优先级</summary>
 <p>
+
+
 选择器的优先级如下：
 
 ```javascript
@@ -521,6 +542,8 @@ css中选择器的解析是从右向左的，同时要注意通配选择符`*`�
 <details>
 <summary>CSS-动画</summary>
 <p>
+
+
 过渡`transition`的js钩子事件为`transitionend`。动画`animation`的js钩子事件为`animationend`
 
 
@@ -546,6 +569,8 @@ css中选择器的解析是从右向左的，同时要注意通配选择符`*`�
 <details>
 <summary>CSS-居中布局</summary>
 <p>
+
+
 居中布局包括垂直居中和水平居中，较难的是垂直居中，我们说下常用的水平垂直居中用到的方法
 
 - absolute + transform
@@ -559,6 +584,8 @@ css中选择器的解析是从右向左的，同时要注意通配选择符`*`�
 <details>
 <summary>CSS-清除浮动</summary>
 <p>
+
+
 清除浮动更确切的说应该是清除浮动影响，常用的方式有两种：
 
 - 利用BFC来消除浮动影响
@@ -571,6 +598,8 @@ css中选择器的解析是从右向左的，同时要注意通配选择符`*`�
 <details>
 <summary>浏览器组成部分</summary>
 <p>
+
+
 I. 基础
 
 浏览器与我们前端息息相关，所以我们需要对浏览器架构有着基本的认识。浏览器基本结构见下图
@@ -617,6 +646,8 @@ III. 数据存储
 <details>
 <summary>浏览器核心机制</summary>
 <p>
+
+
 I. 事件循环
 
 js代码执行依赖于事件循环机制，事件循环机制具体概念见下图：
@@ -664,6 +695,63 @@ v8分配内存分为新生代和老生代。生命周期短的在新生代中使
 <details>
 <summary>跨标签页通信</summary>
 <p>
+
+
+跨标签页通信这里主要介绍4种方法
+
+#### BroadcastChannel
+
+BroadcaseChannel API允许同源脚本发送消息到其他的浏览器上下文（包括windows/tabs，iframes， workers）。
+
+它的使用方法是：
+
+1. 使用onmessage事件来接收消息，它接收一个event对象，数据存储在event.data中（data能够是字符串或者其他任何被结构化克隆算法支持的对象（Strings, Objects, Arrays, Blobs, ArrayBuffer, Map）
+2. 使用postMessage来发送对象
+3. 发送完毕后可以使用close方法来关闭通信管道
+
+这种方法的缺点是兼容性不好，并且有同源限制
+
+#### ShareWorker
+
+worker是一种运行在非主线程上的脚本，SharedWorker与普通worker的区别就是可以在同源上下文中（包括windows/tabs，iframes， workers）共享
+
+它的使用方法是：
+
+1. 通过new SharedWorker(workerpath)来创建一个SharedWorker对象
+2. 通过worker.port来获取MessagePort对象（使用该对象进行通信）
+3. port.onmessage可以用来监听接收事件，数据存储在event.data中（data的结构与BroadcastChannel中相同）（注意如果使用addEventListener来添加message监听事件，那么需要使用worker.start()来手动开启，直接使用onmessage属性监听会隐式调用该方法）
+4. 使用postMessage来发送对象
+5. 在worker中同样需要获取各个上下问的port来与之进行通信，port可以在onconnect事件触发的时候从e.ports[0]中进行获取
+
+这种方法的缺点是兼容性一般，并且有同源限制
+
+#### postMessage
+
+postMessage是window对象上的一个方法，可以突破同源限制来进行不同tab间的通信，只要正确使用这种方法很安全
+
+它的使用方法是：
+
+1. 获取window.open()对象返回的窗口获取iframe窗口
+2. 在要接受数据的窗口进行window.onmessage的监听，参数为event（event包含origin，data等属性）
+3. 在获取到的窗口对象instance上，调用instance.postMessage方法，第一个参数为要传输的data，第二个参数为targetOrigin，可以传入*表示所有域都允许，为了安全，最好传入目标域
+
+这种方法的缺点是兼容性不好，但这是唯一不受同源限制的方法
+
+### localStorage
+
+localStorage是浏览器的存储对象，配合storage事件可以实现跨标签页通信。
+
+它的使用方法是：
+
+1. 利用同源上下文可以读取相同localStorage的特性来进行通信，使用localStorage.setItem设置数据，使用localStorage.getItem读取数据
+2. 利用window.onstroage事件来监听存储事件，从而实现通信，storage事件的参数event（拥有属性oldValue，newValue，key， url等）在chrome中测试，sessionStroage并没有触发storage事件
+
+这种方法的兼容性很好，这也有自己的缺点
+
+1. 有同源限制
+2. 存储相同的值无法触发storage事件
+3. storage事件在chrome/firefox中不会在当前页面触发
+
 </p>
 </details>
 
@@ -671,14 +759,63 @@ v8分配内存分为新生代和老生代。生命周期短的在新生代中使
 <details>
 <summary>内存泄漏</summary>
 <p>
+
+
+以下几种情况容易造成内存泄漏：
+
+1. 意外的全局变量
+2. 闭包
+3. dom引用
+4. 定时器
+5. 事件监听
+6.
 </p>
 </details>
 
 <details>
 <summary>安全</summary>
 <p>
+
+
+#### xss
+
+xss全称Cross Site Script（跨站脚本攻击），利用客户端对服务端的信任，从服务器中读取的内容可能包含用户插入的恶意脚本
+
+防护手段：
+
+- 对用户内容进行过滤和转义
+- 使用CSP进行脚本执行限制
+
+
+#### csrf
+
+csrf全称Cross Site Request Frogrey（跨站请求伪造），利用服务器对客户端的信任，借用用户身份验证信息对服务器进行请求
+
+防护手段：
+
+- 对于可以修改的内容的接口使用Restful形式的接口
+- cookie设置为secure和httpOnly
+- 使用refer或者在客户端生成token每次用来校验请求是否合法
 </p>
 </details>
+
+<details>
+<summary>Service Worker</summary>
+<p>
+
+
+Service Worker是web worker的一种，主要用来构建PWA，目前主流浏览器都已支持。
+
+它的生命周期如下图所示：
+
+![sw-lifecycle](https://user-images.githubusercontent.com/13817144/54370160-1f042880-46b2-11e9-860d-e8b93aaa26b0.png)
+
+更多详细内容可以看[这里](https://developers.google.com/web/fundamentals/primers/service-workers/?hl=zh-cn)
+
+真实项目中更多的是使用[workbox](https://developers.google.com/web/tools/workbox/)来使用sw
+</p>
+</details>
+
 
 ## 🍑NETWORK
 
