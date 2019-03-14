@@ -486,9 +486,45 @@ IV. 选择器
 
 css中选择器的解析是从右向左的，同时要注意通配选择符`*`和关系选择符对优先级没有影响
 
-V. 动画
+V. 动画/过渡
+
+过渡`transition`的js钩子事件为`transitionend`。动画`animation`的js钩子事件为`animationend`
+
+
+动画中常用的属性及属性值总结如下
+
+```css
+div {
+  animation: duration timing-function delay count direction fill-mode play-state name;
+
+  // duration 单位s
+  // timing-function 常用值linear、ease、ease-in、ease-out、ease-in-out、cubic-bezier（贝塞尔曲线）、steps、step-start、step-end
+  // delay 单位s可以为负值（-1s代表从1s处开始）
+  // count 可以为infinite或者为数字
+  // direction 常用值normal、reverse、alternate、alternate-reverse
+  // fill-mode 常用值none、forwards（保持最后一帧）、backwards、both
+  // play-state 常用值paused、running
+}
+
+```
 
 #### 技巧方面
+
+I. 居中布局的方法
+
+居中布局包括垂直居中和水平居中，较难的是垂直居中，我们说下常用的水平垂直居中用到的方法
+
+- absolute + transform
+- line-height + vertical-align
+- flex
+- table
+
+II. 清除浮动
+
+清除浮动更确切的说应该是清除浮动影响，常用的方式有两种：
+
+- 利用BFC来消除浮动影响
+- 使用`clear`属性来清除浮动影响
 
 ## 🍐BROWSER
 ### 组成部分
