@@ -8,7 +8,7 @@
 ## 🍎BASIC
 
 <details>
-<summary>JS核心</summary>
+<summary>JS-核心部分</summary>
 <p>
 I. 对象
 
@@ -138,7 +138,7 @@ const fooReference = {
 </details>
 
 <details>
-<summary>JS对象拷贝</summary>
+<summary>JS-对象拷贝</summary>
 <p>
 I. 浅拷贝
 
@@ -173,8 +173,9 @@ function deepCopy(p, c) {
 </p>
 </details>
 
+
 <details>
-<summary>JS继承</summary>
+<summary>JS-继承</summary>
 <p>
 继承在javascript是利用原型链的方式实现的，在es6中加入了`class/extends`的方式也可以实现继承。除了es6中`class/extends`的方式我们来看下原型链的继承方式。
 
@@ -278,13 +279,7 @@ dog.name = 'hei'
 </details>
 
 <details>
-<summary>JS类型</summary>
-<p>
-</p>
-</details>
-
-<details>
-<summary>JS类型</summary>
+<summary>JS-类型</summary>
 <p>
 I. 类型分类
 
@@ -317,9 +312,9 @@ III. 类型转化
 </p>
 </details>
 
-
-#### 模块化
-
+<details>
+<summary>JS-模块化</summary>
+<p>
 javascript中常见的模块化方式有三种，分别是
 
 - es modules
@@ -333,10 +328,13 @@ javascript中常见的模块化方式有三种，分别是
 `amd`使用`require/define`的语法，它是动态的，常用于异步加载（如requirejs）
 
 这部分更多详细解释请参考[这里](https://medium.com/computed-comparisons/commonjs-vs-amd-vs-requirejs-vs-es6-modules-2e814b114a0b)
+</p>
+</details>
 
 
-#### AST/Babel
-
+<details>
+<summary>AST/BABEL</summary>
+<p>
 AST全称Abrstract Syntax Tree（虚拟语法树），是对代码语法分析后得出的一棵语法树。
 
 生成它的主要过程包括分词和解析（词法分析和语法分析），最终生成语法树。可以用该语法树分析代码，来做成各种工具如代码提示，代码格式化、代码转换等等很多应用
@@ -346,11 +344,12 @@ Babel就是AST的一种应用，Babel的过程是`parse => transform => generate
 1. 使用[babel-parser](https://github.com/babel/babel/tree/master/packages/babel-parser)将es6/es7等语法解析成AST
 2. 使用[babel-traverse](https://github.com/babel/babel/tree/master/packages/babel-traverse)对AST进行遍历转义，形成新的AST
 3. 使用[babel-generator](https://github.com/babel/babel/tree/master/packages/babel-generator)将新的AST生成代码
+</p>
+</details>
 
-
-
-#### 防抖/节流
-
+<details>
+<summary>防抖/节流</summary>
+<p>
 防抖和节流一般用于频繁触发函数的优化，减少不必要的开销。
 
 防抖是对于频繁触发的函数，合并成一次执行，常用于用户输入事件
@@ -396,9 +395,13 @@ function throttle(fn, interval) {
   }
 }
 ```
+</p>
+</details>
 
-#### Map/Set
 
+<details>
+<summary>Map/Set</summary>
+<p>
 这里主要说下ES6中的`Map`、`WeakMap`、`Set`和`WeakSet`
 
 I. Set和WeakSet
@@ -437,22 +440,25 @@ II. Map和WeakMap
 `WeakMap`与`WeakSet`概念类似，只有`get`,`set`，`delete`和`has`方法
 
 ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
+</p>
+</details>
 
-### CSS
 
-#### 基础知识
-
-I. 盒模型
-
+<details>
+<summary>CSS-盒模型</summary>
+<p>
 盒模型是html元素布局模型，盒模型由以下几部分组成
 
 ![css盒模型](https://user-images.githubusercontent.com/13817144/54353528-35e55380-468f-11e9-872a-18a5fa78bcd1.png)
 
 盒模型分为两类：标准盒模型和IE盒模型，切换类别可以使用css属性`box-sizing`。默认为标准盒模型`content-box`，IE盒模型用`border-box`表示。
+</p>
+</details>
 
 
-II. BFC
-
+<details>
+<summary>CSS-BFC</summary>
+<p>
 BFC全称Block Formating Context（块级格式化上下文），是页面中一块独立的渲染区域，并且有一套渲染规则，它决定了子元素如何定位，以及和其他元素的关系和相互作用。
 
 形成BFC需要满足以下几个条件：
@@ -463,10 +469,13 @@ BFC全称Block Formating Context（块级格式化上下文），是页面中一
 - overflow不为`visible`
 
 BFC的特点主要是独立，不影响其他区域，也不会被其他区域所影响。
+</p>
+</details>
 
 
-III. 层叠
-
+<details>
+<summary>CSS-层叠</summary>
+<p>
 层叠是HTML元素的三维概念，所有元素都在面朝屏幕的z轴上延伸。
 
 
@@ -490,9 +499,13 @@ III. 层叠
 
 ![层叠规则](https://user-images.githubusercontent.com/13817144/54355034-033d5a00-4693-11e9-904c-94aa5c85beea.png)
 
+</p>
+</details>
 
-IV. 选择器
 
+<details>
+<summary>CSS-选择器优先级</summary>
+<p>
 选择器的优先级如下：
 
 ```javascript
@@ -500,9 +513,12 @@ IV. 选择器
 ```
 
 css中选择器的解析是从右向左的，同时要注意通配选择符`*`和关系选择符对优先级没有影响
+</p>
+</details>
 
-V. 动画/过渡
-
+<details>
+<summary>CSS-动画</summary>
+<p>
 过渡`transition`的js钩子事件为`transitionend`。动画`animation`的js钩子事件为`animationend`
 
 
@@ -521,29 +537,38 @@ V. 动画/过渡
 // play-state 常用值paused、running
 
 ```
+</p>
+</details>
 
-#### 技巧方面
 
-I. 居中布局的方法
-
+<details>
+<summary>CSS-居中布局</summary>
+<p>
 居中布局包括垂直居中和水平居中，较难的是垂直居中，我们说下常用的水平垂直居中用到的方法
 
 - absolute + transform
 - line-height + vertical-align
 - flex
 - table
+</p>
+</details>
 
-II. 清除浮动
 
+<details>
+<summary>CSS-清除浮动</summary>
+<p>
 清除浮动更确切的说应该是清除浮动影响，常用的方式有两种：
 
 - 利用BFC来消除浮动影响
 - 使用`clear`属性来清除浮动影响
+</p>
+</details>
 
 ## 🍐BROWSER
 
-#### 组成部分
-
+<details>
+<summary>浏览器组成部分</summary>
+<p>
 I. 基础
 
 浏览器与我们前端息息相关，所以我们需要对浏览器架构有着基本的认识。浏览器基本结构见下图
@@ -584,10 +609,12 @@ III. 数据存储
 `localStorage/sessionStorage`作为浏览器存储一般大小为5M-10M。用键值对进行存储，键与值都为字符串。`localStorage`与`sessionStorage`的区别是`localStorage`会永久储存，除非主动删除。而`sessionStorage`会在tab关闭后消失。
 
 `indexDB`属于浏览器数据库级别，由于目前还没有遇到过使用的场景，故先不介绍。
+</p>
+</details>
 
-
-#### 核心机制
-
+<details>
+<summary>浏览器核心机制</summary>
+<p>
 I. 事件循环
 
 js代码执行依赖于事件循环机制，事件循环机制具体概念见下图：
@@ -629,22 +656,47 @@ v8中的垃圾回收算法主要分为三种
 这三种算法不存在绝对优劣，三种结合使用才能达到更优的回收效果。
 
 v8分配内存分为新生代和老生代。生命周期短的在新生代中使用scavenge进行内存清理。当对象已使用scavenge清理过并且from的使用率超过25%的时候，将该对象放入老生代中，这个过程叫做晋升。老生代中使用mark-sweep和mark-compact算法，这两种算法是依据情况交替使用的。
+</p>
+</details>
 
-#### 跨标签页通信
+<details>
+<summary>跨标签页通信</summary>
+<p>
+</p>
+</details>
 
-#### 内存泄漏
-#### 安全
+
+<details>
+<summary>内存泄漏</summary>
+<p>
+</p>
+</details>
+
+<details>
+<summary>安全</summary>
+<p>
+</p>
+</details>
 
 ## 🍑NETWORK
-### HTTP
-#### 分类
-#### 常见状态码
-#### HTTP缓存
 
-### 跨域
-#### CORS
-#### JSONP
+<details>
+<summary>HTTP</summary>
+<p>
+</p>
+</details>
 
-### WEBSOCKET
+<details>
+<summary>跨域</summary>
+<p>
+</p>
+</details>
+
+<details>
+<summary>WEBSOCKET</summary>
+<p>
+</p>
+</details>
+
 
 ## 🍒OPTIMIZATION
