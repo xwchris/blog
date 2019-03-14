@@ -473,6 +473,7 @@ III. 层叠
 2. z-index大的高于z-index低的（z-index只对形成层叠上下文的元素有效）
 
 具体层叠规则看下图
+
 ![层叠规则](https://user-images.githubusercontent.com/13817144/54355034-033d5a00-4693-11e9-904c-94aa5c85beea.png)
 
 
@@ -493,18 +494,17 @@ V. 动画/过渡
 
 动画中常用的属性及属性值总结如下
 
-```css
-div {
-  animation: duration timing-function delay count direction fill-mode play-state name;
+```javascript
+// eg:
+// animation: duration timing-function delay count direction fill-mode play-state name;
 
-  // duration 单位s
-  // timing-function 常用值linear、ease、ease-in、ease-out、ease-in-out、cubic-bezier（贝塞尔曲线）、steps、step-start、step-end
-  // delay 单位s可以为负值（-1s代表从1s处开始）
-  // count 可以为infinite或者为数字
-  // direction 常用值normal、reverse、alternate、alternate-reverse
-  // fill-mode 常用值none、forwards（保持最后一帧）、backwards、both
-  // play-state 常用值paused、running
-}
+// duration 单位s
+// timing-function 常用值linear、ease、ease-in、ease-out、ease-in-out、cubic-bezier（贝塞尔曲线）、steps、step-start、step-end
+// delay 单位s可以为负值（-1s代表从1s处开始）
+// count 可以为infinite或者为数字
+// direction 常用值normal、reverse、alternate、alternate-reverse
+// fill-mode 常用值none、forwards（保持最后一帧）、backwards、both
+// play-state 常用值paused、running
 
 ```
 
