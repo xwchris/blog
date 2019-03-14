@@ -7,9 +7,9 @@
 
 ## 🍎BASIC
 
-### JAVACRIPT
-
-#### 核心
+<details>
+<summary>JS核心</summary>
+<p>
 I. 对象
 
 对象是js中最常见的也是最重要的部分。
@@ -134,10 +134,12 @@ const fooReference = {
 ```
 
 这部分更多详细解释请参考[这里](http://dmitrysoshnikov.com/ecmascript/chapter-3-this/#-reference-type)
+<p>
+</details>
 
-
-#### 对象拷贝
-
+<details>
+<summary>JS对象拷贝</summary>
+<p>
 I. 浅拷贝
 
 对象的浅拷贝可以使用`Object.assign`方法和`扩展运算符...`来实现
@@ -168,10 +170,12 @@ function deepCopy(p, c) {
   return c;
 }
 ```
+</p>
+</details>
 
-
-#### 继承方式
-
+<details>
+<summary>JS继承</summary>
+<p>
 继承在javascript是利用原型链的方式实现的，在es6中加入了`class/extends`的方式也可以实现继承。除了es6中`class/extends`的方式我们来看下原型链的继承方式。
 
 I. 构造函数继承
@@ -270,10 +274,18 @@ dog.name = 'hei'
 第二种就是将所有属性进行拷贝，拷贝分类浅拷贝和深拷贝，可以参考上面的拷贝部分
 
 这部分更多详细解释请参考[这里](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance_continued.html)
+</p>
+</details>
 
+<details>
+<summary>JS类型</summary>
+<p>
+</p>
+</details>
 
-#### 类型
-
+<details>
+<summary>JS类型</summary>
+<p>
 I. 类型分类
 
 基本类型
@@ -302,6 +314,8 @@ III. 类型转化
 - `Boolean/Null`类型转为相应的数字， `undefined`和对象会转为`NaN`，数组转数字会将第一项的值转换为数字，如果没有则为0
 - 对于`+`操作符，有一个字符串都转为字符串
 - 对象类型优先调用`valueOf`然后是`toString`
+</p>
+</details>
 
 
 #### 模块化
@@ -527,12 +541,99 @@ II. 清除浮动
 - 使用`clear`属性来清除浮动影响
 
 ## 🍐BROWSER
-### 组成部分
-### 渲染
-### 核心机制
-### 跨标签页通信
-### 内存泄漏
-### 安全
+
+#### 组成部分
+
+I. 基础
+
+浏览器与我们前端息息相关，所以我们需要对浏览器架构有着基本的认识。浏览器基本结构见下图
+
+![浏览器结构](https://user-images.githubusercontent.com/13817144/54362973-ed389500-46a4-11e9-813a-29cf82a08941.png)
+
+从上到下，从左到右来解释这些部分
+
+- 用户界面：除了主窗口呈现渲染内容外，其他可视部分都属于用户界面部分
+- 浏览器引擎：用于在用户界面和渲染引擎间传递指令
+- 渲染引擎：用于解析html和css，然后绘制呈现出来
+- 网络：用于网络请求比如http请求
+- js解释器：用于解释和执行js代码
+- 用户界面后端：用于绘制基本的窗口小部件
+- 数据存储：持久层，用于在硬盘或内存中存储各种数据
+
+
+II. 渲染详解
+
+下面详细说一下渲染引擎，渲染引擎在界面呈现的过程中扮演非常重要的角色，我们以最受欢迎的webkit的渲染流程作为展示，它的渲染图如下所示
+
+![webkit渲染过程](https://user-images.githubusercontent.com/13817144/54363443-e9f1d900-46a5-11e9-8c21-14e5c42f816f.png)
+
+简单来说渲染过程就是分别进行css解析和html解析，生成cssom树和dom树，两者结合生成渲染树。计算布局，最后绘制到屏幕上。说一下其中需要注意的点：
+
+1. html解析是一个渐进的过程，为了尽快展现页面，浏览器会一边加载一边渲染
+2. js的执行会阻塞css和html解析。渲染引擎与js解释器是相互独立的，在渲染过程中js解释器（或者说js引擎）可能会操作dom或css，这些都会影响最终生成的结果，这也是为什么js会阻塞dom执行的原因。因此一般讲js放在页面最后或者使用defer和async属性（async等js下载完后立即执行，defer是等html解析完后执行）
+3. html解析的过程中遇到js会将控制权交给js解释器，等js执行完后，再由js解释器将控制权交给渲染引擎
+4. 改变样式和dom结构会引起重绘或重排（回流）。改变布局属性如margin，padding等会让渲染引擎重新计算布局，改变background，color等属性会让渲染引擎进行重新绘制
+
+
+III. 数据存储
+
+最后正好在这里总结下数据存储，现代浏览器中的存储通常分为三类`cookie`，`localStorage/sessionStorage`和`indexDB`。
+
+`cookie`通常用作存储用户信息，每次发送同源请求都会一同被发送。它的大小一般为4k，通常用作用户身份校验
+
+`localStorage/sessionStorage`作为浏览器存储一般大小为5M-10M。用键值对进行存储，键与值都为字符串。`localStorage`与`sessionStorage`的区别是`localStorage`会永久储存，除非主动删除。而`sessionStorage`会在tab关闭后消失。
+
+`indexDB`属于浏览器数据库级别，由于目前还没有遇到过使用的场景，故先不介绍。
+
+
+#### 核心机制
+
+I. 事件循环
+
+js代码执行依赖于事件循环机制，事件循环机制具体概念见下图：
+
+![事件循环机制](https://user-images.githubusercontent.com/13817144/54365221-6afe9f80-46a9-11e9-8a2c-2dbde2c7022d.png)
+
+1. 执行栈运行过程中，执行同步代码。如果遇到异步代码，开始执行异步代码（setTimeout和xhr等webapis会由浏览器执行，待完成后将回调函数放入任务队列）。将异步回调放入任务队列，微任务进微任务队列，宏任务进宏任务队列
+2. 执行栈为空后，检查微任务队列，如果有任务，则逐个执行直到微任务队列为空
+3. 然后检查宏任务队列，执行第一个宏任务，进入执行栈执行，如此循环
+
+任务分为宏任务和微任务
+微任务一般有：
+
+- process.nextTick
+- Promise
+
+宏任务有：
+
+- setTimeout/setInterval
+- I/O task
+
+
+II. v8垃圾回收机制
+
+v8中的垃圾回收算法主要分为三种
+
+- scavenge：一种复制算法， 主要处理生命周期短的对象。存在两个semispace空间，分别是from和to空间。每次内存分配都会从from中进行分配。进行回收时，遍历from空间，将存活对象从from空间移动到to空间。完成后进行from和to的角色交换
+- mark-sweep：标记清除。将已存活对象进行标记，清除没有被标记的对象
+- mark-compact：标记整理。将存活对象移动至一侧，然后清除边界外的内存
+
+它们的特点如下表所示
+
+| 回收算法 | 速度 | 空间开销 | 是否移动对象 | 是否有碎片 |
+| ----| --- | --- | --- | --- |
+| scavenge     | 快   | 大 | 否 | 无 |
+| mark-sweep   | 中等 | 小 | 否 | 有 |
+| mark-compact | 慢  | 小 | 是 | 无 |
+
+这三种算法不存在绝对优劣，三种结合使用才能达到更优的回收效果。
+
+v8分配内存分为新生代和老生代。生命周期短的在新生代中使用scavenge进行内存清理。当对象已使用scavenge清理过并且from的使用率超过25%的时候，将该对象放入老生代中，这个过程叫做晋升。老生代中使用mark-sweep和mark-compact算法，这两种算法是依据情况交替使用的。
+
+#### 跨标签页通信
+
+#### 内存泄漏
+#### 安全
 
 ## 🍑NETWORK
 ### HTTP
