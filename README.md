@@ -699,7 +699,7 @@ v8分配内存分为新生代和老生代。生命周期短的在新生代中使
 
 跨标签页通信这里主要介绍4种方法
 
-#### BroadcastChannel
+### BroadcastChannel
 
 BroadcaseChannel API允许同源脚本发送消息到其他的浏览器上下文（包括windows/tabs，iframes， workers）。
 
@@ -711,7 +711,7 @@ BroadcaseChannel API允许同源脚本发送消息到其他的浏览器上下文
 
 这种方法的缺点是兼容性不好，并且有同源限制
 
-#### ShareWorker
+### ShareWorker
 
 worker是一种运行在非主线程上的脚本，SharedWorker与普通worker的区别就是可以在同源上下文中（包括windows/tabs，iframes， workers）共享
 
@@ -725,7 +725,7 @@ worker是一种运行在非主线程上的脚本，SharedWorker与普通worker�
 
 这种方法的缺点是兼容性一般，并且有同源限制
 
-#### postMessage
+### postMessage
 
 postMessage是window对象上的一个方法，可以突破同源限制来进行不同tab间的通信，只要正确使用这种方法很安全
 
@@ -768,7 +768,7 @@ localStorage是浏览器的存储对象，配合storage事件可以实现跨标�
 3. dom引用
 4. 定时器
 5. 事件监听
-6.
+
 </p>
 </details>
 
@@ -777,7 +777,7 @@ localStorage是浏览器的存储对象，配合storage事件可以实现跨标�
 <p>
 
 
-#### xss
+### xss
 
 xss全称Cross Site Script（跨站脚本攻击），利用客户端对服务端的信任，从服务器中读取的内容可能包含用户插入的恶意脚本
 
@@ -787,7 +787,7 @@ xss全称Cross Site Script（跨站脚本攻击），利用客户端对服务端
 - 使用CSP进行脚本执行限制
 
 
-#### csrf
+### csrf
 
 csrf全称Cross Site Request Frogrey（跨站请求伪造），利用服务器对客户端的信任，借用用户身份验证信息对服务器进行请求
 
@@ -820,22 +820,164 @@ Service Worker是web worker的一种，主要用来构建PWA，目前主流浏�
 ## 🍑NETWORK
 
 <details>
-<summary>HTTP</summary>
+<summary>OSI网络模型</summary>
 <p>
+
+
+OSI网络模型分为7层，它们的顺序、主要功能和对应的协议见下图
+
+![seven-layers-of-OSI-model](https://user-images.githubusercontent.com/13817144/54419012-638ad500-4741-11e9-816c-78c52b8766d6.png)
 </p>
 </details>
+
+<details>
+<summary>TCP</summary>
+<p>
+
+
+tcp主要需要了解连接建立和断开的过程，详细过程见下图
+
+![TCP三次握手与四次挥手](https://user-images.githubusercontent.com/13817144/54419184-ced4a700-4741-11e9-97ff-7e3ccc0f73b5.png)
+</p>
+</details>
+
+<details>
+<summary>HTTP</summary>
+<p>
+
+
+I. 各http版本及功能
+
+<table>
+  <thead>
+    <tr>
+      <td>名称</td>
+      <td>特点</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>http 0.9</td>
+      <td>
+        <ul>
+          <li>只有GET方法</li>
+          <li>没有版本号</li>
+          <li>不支持请求头/响应头</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>http 1.0</td>
+      <td>
+        <ul>
+          <li>加入了POST，HEAD等方法</li>
+          <li>响应头第一行使用HTTP/1.0指定版本号</li>
+          <li>支持请求头/响应头</li>
+          <li>支持请求头/响应头</li>
+          <li>加入响应码</li>
+          <li>支持代理</li>
+        </ul>
+      </td>
+    </tr>
+     <tr>
+      <td>http 1.1</td>
+      <td>
+        <ul>
+          <li>加入OPTIONS等方法</li>
+          <li>添加新的响应码</li>
+          <li>加入持久化连接keep-alive</li>
+          <li>缓存控制</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>http 2.0</td>
+      <td>
+        <ul>
+          <li>分帧层。采用二进制进行编码。帧是HTTP2.0的最小通信单元，它包含帧头，至少标识了属于哪个数据流</li>
+          <li>头部压缩。客户端和服务端同时维护和更新一个header fields表，来减少头部传输字节的大小</li>
+          <li>多路复用。可以在http连接上同时进行多个请求，因为数据路可以交错传输，接收之后进行组合</li>
+          <li>优先级。优先处理高优先级的请求/相应</li>
+          <li>服务器推送。在客户端请求某个资源时，同时将未来可能要请求的资源推送给客户端</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>https</td>
+      <td>
+        通信过程
+        <ul>
+          <li>服务端将公钥加入数字证书中并返回给服务器</li>
+          <li>客户端和服务端协商出通信密钥</li>
+          <li>使用通信密钥加密信息，然后使用公钥加密通信密钥</li>
+          <li>进行http通信</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+II. http常见状态码
+
+| code | message |
+| --- | --- |
+| 100 | Continue |
+| 101 | Switching Protocol |
+| 200 | Ok |
+| 206 | Partial Content |
+| 304 | Not Modified |
+| 307 | Temporary Redirect |
+| 308 | Permanent Redirect |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 500 | Internal Server Error |
+| 502 | Bad Gateway |
+| 504 | Gateway Timeout |
+
+
+III. http缓存
+
+| 分类 | http请求头/响应头 | 说明 |
+| --- | --- | --- |
+| 强缓存 | catch-control | 使用max-age相对时间控制缓存时间，值为no-cache的时候表示不使用客户端缓存，当值为no-store时，连服务器缓存也不使用，catch-control的优先级高于expires |
+| 强缓存 | expires | 使用绝对过期时间控制过期时间 |
+| 协商缓存 | last-modified/if-modified-since | last-modified是response字段，表示文件最后一次修改时间，对应request字段if-modified-since |
+| 协商缓存 | etag/if-none-match | etag是由文件内容生成的唯一标识，是response字段。request字段对应if-none-match |
+</p>
+</details>
+
 
 <details>
 <summary>跨域</summary>
 <p>
+
+跨域常用的手段有CORS和JSONP
+
+更多详细信息查看[这里](https://github.com/xwchris/blog/issues/30)
+
 </p>
 </details>
+
 
 <details>
 <summary>WEBSOCKET</summary>
 <p>
+
+
+Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需要进行频繁通信的场景。
+
+它的使用步骤为：
+
+- 构造函数WebSocket接收一个字符传作为websocket作为路径
+- 实例拥有onopen、onmessage、onerror、onclose等方法
+- ws. readyState表示状态
+- 使用send发送对象
 </p>
 </details>
 
 
 ## 🍒OPTIMIZATION
+
+这部分详细内容点击[这里](https://github.com/xwchris/blog/issues/72)
