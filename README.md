@@ -2,8 +2,11 @@
 ![xwchris](https://img.shields.io/maintenance/xwchris/2019.svg?style=flat)
 ![issues](https://img.shields.io/github/issues/xwchris/collection.svg?style=flat)
 
-# Blog
-本blog主要用于记录和总结前端常用知识和相关内容的深入理解，帮助自己进行前端知识体系的构建，形成技术沉淀
+# 前端常用知识梳理
+
+本篇文章主要是对前端常用知识的简单梳理，方便查阅与学习。
+
+更多详细的文章请移步本仓库的[issues](https://github.com/xwchris/blog/issues)
 
 ## 🍎BASIC
 
