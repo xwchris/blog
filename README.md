@@ -695,6 +695,95 @@ v8分配内存分为新生代和老生代。生命周期短的在新生代中使
 </p>
 </details>
 
+
+<details>
+<summary>CSSOM API</summary>
+<p>
+  
+  
+CSSOM是css对象模型，通过cssom api我们可以访问和修改css样式。它分为两部分分别是CSSOM API和CSSOM View Api。
+
+### CSSOM API
+
+我们先来说下CSSOM API。我们如果需要获取样式表，可以使用`document`上的`styleSheets`属性来获取，样式表中的规则则可以在StyleSheet上使用`cssRules`属性获取。cssRules返回的列表包括多个cssRule对象，最常用的对象是`CssStyleRule`对象，该对象有`selectorText`和`style`两个属性，可以分别用来获取渲染器和样式。（注：`selectorText`是字符串类型，`style`是对象），这些属性都可以直接进行修改，从而改变样式。
+
+```javascript
+document.styleSheets[0].cssRules[0]
+```
+
+另外cssdom api还提供一个获取计算后样式的api，它在`window`对象上，名为`getComputedStyle`
+
+```javascript
+window.getComputedStyle(elt, pseudoElt);
+```
+
+第一个参数是要查询的元素，第二个参数可选，用于选择伪元素。
+
+### CSSOM View API
+
+下面说下CSSOM View Api，这部分API可以视作DOM API的扩展，它在原本的Element元素上添加了显示相关的API，总的来说分为三类，窗口部分，滚动部分和显示部分。
+
+#### 窗口部分
+
+窗口部分API用于操作浏览器窗口的位置、大小等
+
+- `moveTo(x, y)`，窗口移动到指定坐标
+- `moveBy(x, y)`，窗口移动指定距离
+- `resizeTo(x, y)`，窗口缩放到指定大小
+- `resizeBy(x, y)`，窗口缩放指定尺寸
+
+此外窗口API还规定了`window.open`的第三个参数
+
+```javascript
+window.open("about:blank", "_blank" ,"width=100,height=100,left=100,right=100" )
+```
+
+#### 滚动部分
+
+滚动部分分为视口滚动和元素滚动，这两部的API是不同的
+
+视口滚动的API在`window`对象上，这些API包括：
+
+- `scrollX`，视口横向滚动距离（别名`pageXOffset`）
+- `scrollY`，视口纵向滚动距离（别名`pageYOffset`）
+- `scroll(x, y)`，视口滚动到指定位置（别名`scrollTo`）
+- `scrollBy(x, y)`，视口滚动指定距离
+
+元素滚动API包括：
+
+- `scrollLeft`，元素横向滚动距离
+- `scrollTop`，元素纵向滚动距离
+- `scrollHeight`，元素滚动内容高度
+- `scrollWidth`，元素滚动内容宽度
+- `scroll(x, y)`，视口滚动到指定位置（别名`scrollTo`）
+- `scrollBy(x, y)`，视口滚动指定距离
+- `scrollIntoView(arg)`，滚动元素所在的父元素，使得元素滚动到可见区域，可以通过arg来指定滚动到中间、开始或最近
+
+#### 布局部分
+
+布局部分也分为全局API和元素API
+
+全局布局API挂载在`window`对象上，全局API包括：
+
+- `innerHeight`，视口高度
+- `innerWidth`，视口宽度
+- `devicePixelRatio`，用于表示物理像素和css像素的关系
+- `outerHeight`，浏览器高度
+- `outerWidth`，浏览器宽度
+- `screen.height`，屏幕高度
+- `screen.width`，屏幕宽度
+
+元素布局API包括：
+
+- `getClientRects(ele)`，返回一个列表，包含该元素内部所有盒的的信息
+- `getBoundingClientRect`，返回元素所有盒包裹的矩形区域的信息
+
+盒子的信息是一个对象，可以通过`top`、`left`、`right`、`bottom`、`width`、`height`、`x`、`y`来获取盒子的位置和大小信息
+
+</p>
+</details>
+
+
 <details>
 <summary>跨标签页通信</summary>
 <p>
