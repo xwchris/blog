@@ -1072,11 +1072,23 @@ Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需�
 ## 🍉FRAME
 
 <details>
- <summary>React核心</summary>
+ <summary>React-内部算法</summary>
  <p>
   
   React核心相关有Diff、Fiber、Virtual DOM。
   具体情况查看该[仓库](https://github.com/xwchris/react-core-implement)，包括原理解释和代码实现
+ </p>
+</details>
+
+<details>
+ <summary>React-生命周期</summary>
+ <p>
+  
+  React16之前的生命周期与React16之后的不同，所以用两张图来记忆。
+
+ ![lifecycle](https://user-images.githubusercontent.com/13817144/54815302-9e09ea00-4ccc-11e9-9eb7-f8dc3f3b2cfc.jpeg)
+  
+ ![lifecycle](https://user-images.githubusercontent.com/13817144/54815312-a6fabb80-4ccc-11e9-9955-5edd0c90cb23.png)
  </p>
 </details>
 
