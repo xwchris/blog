@@ -340,6 +340,8 @@ javascript中常见的模块化方式有三种，分别是
 
 `amd`使用`require/define`的语法，它是动态的，常用于异步加载（如requirejs）
 
+![2976869-eff2bf9dfa38f0a8](https://user-images.githubusercontent.com/13817144/54816399-15407d80-4ccf-11e9-83a6-480ef275e6d2.png)
+
 这部分更多详细解释请参考[这里](https://medium.com/computed-comparisons/commonjs-vs-amd-vs-requirejs-vs-es6-modules-2e814b114a0b)
 </p>
 </details>
