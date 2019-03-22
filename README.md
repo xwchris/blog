@@ -1069,6 +1069,29 @@ Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需�
 </p>
 </details>
 
+## FRAME
+
+<details>
+ <summary>React核心</summary>
+ <p>
+  
+  React核心相关有Diff、Fiber、Virtual DOM。
+  具体情况查看该[仓库](https://github.com/xwchris/react-core-implement)，包括原理解释和代码实现
+ </p>
+</details>
+
+## OTHER
+
+<details>
+<summary>观察者和发布订阅模式的区别</summary>
+<p>
+ 
+ 
+这两种模式都是发布订阅类型的模式，它们的不同是彼此否相互感知
+ 
+ ![53536375-228ba180-3b41-11e9-9737-d71f85040cfc](https://user-images.githubusercontent.com/13817144/54796774-91fe3800-4c8c-11e9-8ae9-75e5aa60fad4.png)
+</p>
+</details>
 
 ## 🍒OPTIMIZATION
 
