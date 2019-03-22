@@ -486,7 +486,7 @@ BFC全称Block Formating Context（块级格式化上下文），是页面中一
 
 形成BFC需要满足以下几个条件：
 
-- body根元素
+- 根元素html
 - 绝对定位的元素（position absolute/fixed）
 - display为`inline-block`、`flex`、`table-cell`的元素
 - overflow不为`visible`
