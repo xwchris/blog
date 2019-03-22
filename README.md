@@ -116,7 +116,7 @@ function (x, y) {
 ![activation-object](https://user-images.githubusercontent.com/13817144/53415167-74321000-3a0b-11e9-913c-254744c80a5d.png)
 
 
-最后来说下This，`this`实际上是与执行上下文相关的一个属性，它不可以被赋值。它是由调用者提供，并与调用写法相关的。那么`this`的值到底是什么哪？在global中`this`就是global本身。当`This`在函数上下文中的时候，它的值取决于函数调用括号左边的值，有为几种情况。
+最后来说下This，`this`实际上是与执行上下文相关的一个属性，它不可以被赋值。它是由调用者提供，并与调用写法相关的。那么`this`的值到底是什么哪？在global中`this`就是global本身。当`This`在函数上下文中的时候，它的值取决于函数调用括号左边的值，有为几种情况。更详细解释参考这篇[文章](https://github.com/mqyqingfeng/Blog/issues/7)
 
 
 1. 该值是Reference类型的时候，this就是base
