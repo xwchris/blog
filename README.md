@@ -1107,6 +1107,15 @@ Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需�
 </p>
 </details>
 
+<details>
+ <summary>移动端屏幕适配</summary>
+ <p>
+  
+  
+  具体内容查看[这里](https://github.com/xwchris/blog/issues/65)
+ </p>
+</details>
+
 ## 🍒OPTIMIZATION
 
 这部分详细内容点击[这里](https://github.com/xwchris/blog/issues/72)
