@@ -469,8 +469,8 @@ ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 <p>
  
  待更新
- </p>
-</detail>
+</p>
+</details>
 
 
 <details>
