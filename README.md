@@ -419,7 +419,7 @@ function throttle(fn, interval) {
 
 
 <details>
-<summary>Map/Set</summary>
+<summary>ES6-Map/Set</summary>
 <p>
 
 
@@ -463,6 +463,14 @@ II. Map和WeakMap
 ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 </p>
 </details>
+
+<details>
+<summary>ES6-Array新增操作</summary>
+<p>
+ 
+ 待更新
+ </p>
+</detail>
 
 
 <details>
