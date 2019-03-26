@@ -157,24 +157,93 @@ II. 深拷贝
 对象的深拷贝方法有
 
 1. 使用`JSON.parse(JSON.stringify(obj))`的方式
-2. 使用循环赋值的方法进行浅拷贝
+2. 使用循环赋值的方法进行深拷贝
 
 第一种方法使用起来很简单，但它的缺点是对于无法JSON的属性如函数、Symbol等会被忽略，并且对于循环引用的对象会发生错误。
 
-第二种方法的代码实现如下
+简单的循环赋值拷贝（没有处理特殊对象如null，regexp）但处理了循环引用问题
 
+广度优先搜索的实现
 ```javascript
-function deepCopy(p, c) {
-  c = c || {};
-  for (var i in p) {
-    if (typeof p[i] === 'object') {
-      c[i] = p[i].constructor === Array ? [] : {};
-      deepCopy(p[i], c[i]);
-    } else {
-      c[i] = p[i];
+// 广度优先搜索（使用队列实现）
+function cloneDeep(obj) {
+  if (typeof obj !== 'object') {
+    return;
+  }
+
+  const queue = [];
+  const map = new WeakMap();
+  const newObj = obj instanceof Array ? [] : {};
+
+  queue.push([obj, newObj]);
+  map.set(obj, newObj);
+
+  let next;
+  while(next = queue.shift()) {
+    const [source, target] = next;
+
+    Object.keys(source).forEach(key => {
+      if (typeof source[key] !== 'object') {
+        target[key] = source[key];
+      } else {
+        target[key] = source[key] instanceof Array ? [] : {};
+
+        if (map.has(source[key])) {
+          target[key] = map.get(source[key]);
+        } else {
+          map.set(source[key], target[key]);
+          queue.push([source[key], target[key]]);
+        }
+      }
+    })
+  }
+
+  return newObj;
+}
+```
+
+深度优先搜索的实现
+```javascript
+// 深度优先搜索（使用栈实现）
+function cloneDeep(obj) {
+  if (typeof obj !== 'object') {
+    return;
+  }
+
+  const stack = [];
+  const map = new WeakMap();
+  const newObj = obj instanceof Array ? [] : {};
+
+  stack.push([obj, newObj, 0]);
+  map.set(obj, newObj);
+
+  let next;
+  while (next = stack.pop()) {
+    const [source, target, index] = next;
+
+    for (let i = index; i < Object.keys(source).length; i++) {
+      const key = Object.keys(source)[i];
+
+      if (typeof source[key] !== 'object') {
+        target[key] = source[key];
+      } else {
+
+        if (map.has(source[key])) {
+          target[key] = map.get(source[key]);
+        } else {
+          next[2] = ++i;
+          stack.push(next);
+
+          target[key] = source[key] instanceof Array ? [] : {};
+
+          stack.push([source[key], target[key], 0]);
+          break;
+        }
+      }
     }
   }
-  return c;
+
+  return newObj;
 }
 ```
 </p>
@@ -467,7 +536,7 @@ ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 <details>
 <summary>ES6-Array新增操作</summary>
 <p>
- 
+
  待更新
 </p>
 </details>
@@ -497,6 +566,7 @@ BFC全称Block Formating Context（块级格式化上下文），是页面中一
 形成BFC需要满足以下几个条件：
 
 - 根元素html
+- 浮动元素
 - 绝对定位的元素（position absolute/fixed）
 - display为`inline-block`、`flex`、`table-cell`的元素
 - overflow不为`visible`
@@ -518,7 +588,7 @@ BFC的特点主要是独立，不影响其他区域，也不会被其他区域�
 形成层叠上下文需要满足以下几个条件：
 
 - 根元素html
-- position为`absolute`或`fixed`并搭配z-index（值不能为auto）
+- position为`relative`或`absolute`并搭配z-index（值不能为auto）
 - position为`fixed`或`sticky`
 - opacity比1小
 - 有`transform`、`perspective`、`filter`、`clip-path`等
@@ -709,8 +779,8 @@ v8分配内存分为新生代和老生代。生命周期短的在新生代中使
 <details>
 <summary>CSSOM API</summary>
 <p>
-  
-  
+
+
 CSSOM是css对象模型，通过cssom api我们可以访问和修改css样式。它分为两部分分别是CSSOM API和CSSOM View Api。
 
 ### CSSOM API
@@ -1084,7 +1154,7 @@ Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需�
 <details>
  <summary>React-内部算法</summary>
  <p>
-  
+
   React核心相关有Diff、Fiber、Virtual DOM。
   具体情况查看该[仓库](https://github.com/xwchris/react-core-implement)，包括原理解释和代码实现
  </p>
@@ -1093,11 +1163,11 @@ Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需�
 <details>
  <summary>React-生命周期</summary>
  <p>
-  
+
   React16之前的生命周期与React16之后的不同，所以用两张图来记忆。
 
  ![lifecycle](https://user-images.githubusercontent.com/13817144/54815302-9e09ea00-4ccc-11e9-9eb7-f8dc3f3b2cfc.jpeg)
-  
+
  ![lifecycle](https://user-images.githubusercontent.com/13817144/54815312-a6fabb80-4ccc-11e9-9955-5edd0c90cb23.png)
  </p>
 </details>
@@ -1107,10 +1177,10 @@ Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需�
 <details>
 <summary>观察者和发布订阅模式的区别</summary>
 <p>
- 
- 
+
+
 这两种模式都是发布订阅类型的模式，它们的不同是彼此否相互感知
- 
+
  ![53536375-228ba180-3b41-11e9-9737-d71f85040cfc](https://user-images.githubusercontent.com/13817144/54796774-91fe3800-4c8c-11e9-8ae9-75e5aa60fad4.png)
 </p>
 </details>
@@ -1118,8 +1188,8 @@ Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需�
 <details>
  <summary>移动端屏幕适配</summary>
  <p>
-  
-  
+
+
   具体内容查看[这里](https://github.com/xwchris/blog/issues/65)
  </p>
 </details>
