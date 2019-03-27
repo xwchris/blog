@@ -803,33 +803,48 @@ window.getComputedStyle(elt, pseudoElt);
 
 下面说下CSSOM View Api，这部分API可以视作DOM API的扩展，它在原本的Element元素上添加了显示相关的API，总的来说分为三类，窗口部分，滚动部分和显示部分。
 
-#### 窗口部分
 
-窗口部分API用于操作浏览器窗口的位置、大小等
+#### window上扩展的API
+
+- `matchMedia(query)`
+- `screen` 屏幕属性
+  - `availWidth`，屏幕的可用宽度
+  - `availHeight`，屏幕的可用高度
+  - `height`，屏幕的css高度
+  - `colorDepth`，返回24
+  - `pixelDepth`，返回24
+
+browsing context
 
 - `moveTo(x, y)`，窗口移动到指定坐标
 - `moveBy(x, y)`，窗口移动指定距离
 - `resizeTo(x, y)`，窗口缩放到指定大小
 - `resizeBy(x, y)`，窗口缩放指定尺寸
 
-此外窗口API还规定了`window.open`的第三个参数
+viewport
 
-```javascript
-window.open("about:blank", "_blank" ,"width=100,height=100,left=100,right=100" )
-```
+- `innerHeight`，视口高度
+- `innerWidth`，视口宽度
 
-#### 滚动部分
-
-滚动部分分为视口滚动和元素滚动，这两部的API是不同的
-
-视口滚动的API在`window`对象上，这些API包括：
+viewport scrolling
 
 - `scrollX`，视口横向滚动距离（别名`pageXOffset`）
 - `scrollY`，视口纵向滚动距离（别名`pageYOffset`）
 - `scroll(x, y)`，视口滚动到指定位置（别名`scrollTo`）
 - `scrollBy(x, y)`，视口滚动指定距离
 
-元素滚动API包括：
+client
+- `devicePixelRatio`，用于表示物理像素和css像素的关系
+- `outerHeight`，浏览器高度
+- `outerWidth`，浏览器宽度
+
+
+Element上扩展的API
+
+- `getClientRects(ele)`，返回一个列表，包含该元素内部所有盒的的信息
+- `getBoundingClientRect`，返回元素所有盒包裹的矩形区域的信息
+
+element scroll
 
 - `scrollLeft`，元素横向滚动距离
 - `scrollTop`，元素纵向滚动距离
@@ -839,27 +854,22 @@ window.open("about:blank", "_blank" ,"width=100,height=100,left=100,right=100" )
 - `scrollBy(x, y)`，视口滚动指定距离
 - `scrollIntoView(arg)`，滚动元素所在的父元素，使得元素滚动到可见区域，可以通过arg来指定滚动到中间、开始或最近
 
-#### 布局部分
+other property
 
-布局部分也分为全局API和元素API
-
-全局布局API挂载在`window`对象上，全局API包括：
-
-- `innerHeight`，视口高度
-- `innerWidth`，视口宽度
-- `devicePixelRatio`，用于表示物理像素和css像素的关系
-- `outerHeight`，浏览器高度
-- `outerWidth`，浏览器宽度
-- `screen.height`，屏幕高度
-- `screen.width`，屏幕宽度
-
-元素布局API包括：
-
-- `getClientRects(ele)`，返回一个列表，包含该元素内部所有盒的的信息
-- `getBoundingClientRect`，返回元素所有盒包裹的矩形区域的信息
-
-盒子的信息是一个对象，可以通过`top`、`left`、`right`、`bottom`、`width`、`height`、`x`、`y`来获取盒子的位置和大小信息
-
+- `clientTop`
+  - 当为inline元素时返回0
+  - border-top-width加上border和padding间的滚动条尺寸（如果实际渲染了的话）
+- `clientLeft`
+  - 当为inline元素时返回0
+  - border-left-width加上border和padding间的滚动条尺寸（如果实际渲染了的话）
+- `clientWidth`
+  - 当为inline元素时返回0
+  - 当元素为根元素（或怪异模式下的body元素）它返回viewport宽度，加上滚动条尺寸（如果实际渲染了的话）
+  - 返回padding-box宽度，加上滚动条尺寸（如果实际渲染了的话）
+- `clientHeight`
+  - 当为inline元素时返回0
+  - 当元素为根元素（或怪异模式下的body元素）它返回viewport高度，加上滚动条尺寸（如果实际渲染了的话）
+  - 返回padding-box高度，加上滚动条尺寸（如果实际渲染了的话）
 </p>
 </details>
 
