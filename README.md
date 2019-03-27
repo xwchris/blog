@@ -534,10 +534,34 @@ ES6更多内容可以[这里](http://es6.ruanyifeng.com/)
 </details>
 
 <details>
-<summary>ES6-Array新增操作</summary>
+<summary>ES6-数组</summary>
 <p>
 
- 待更新
+ES6新增了很多的数组操作，这里简单罗列和分类，具体详情看阮一峰的[ECMAScript 6 入门](http://es6.ruanyifeng.com/#docs/array)
+
+```javascript
+// 构造
+Array.from // 参数接收可遍历对象
+Array.of // 构造一个数组，为了解决Array构造函数参数个数不同，结果不同的问题
+
+// 填值
+Array.prototype.fill // 为数组填值
+Array.prototype.copyWithin // 参数为target start end
+
+// 查找
+Array.prototype.find // 参数为一个函数，找到值返回该值否则返回undefined
+Array.prototype.findIndex // 参数同样为函数，找到值返回该位置，否则返回-1
+Array.prototype.includes // 判断是否包含某值
+
+// 迭代 这三个函数都返回一个遍历器对象
+Array.prototype.entries
+Array.prototype.keys
+Array.prototype.values
+
+// 工具
+Array.flat // 拉平数组，可以传入要平的层数，默认为1层，如果要全部拉平可以传入Infinity
+Array.flatMap // 对函数成员先执行map，再拉平，只能一层
+```
 </p>
 </details>
 
