@@ -806,13 +806,13 @@ window.getComputedStyle(elt, pseudoElt);
 
 #### window上扩展的API
 
-- `matchMedia(query)`
 - `screen` 屏幕属性
   - `availWidth`，屏幕的可用宽度
   - `availHeight`，屏幕的可用高度
-  - `height`，屏幕的css高度
-  - `colorDepth`，返回24
-  - `pixelDepth`，返回24
+  - `width`，屏幕的宽度
+  - `height`，屏幕的高度
+  - `colorDepth`，返回固定值24
+  - `pixelDepth`，返回固定值24
 
 browsing context
 
