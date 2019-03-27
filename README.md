@@ -657,6 +657,7 @@ css中选择器的解析是从右向左的，同时要注意通配选择符`*`�
 居中布局包括垂直居中和水平居中，较难的是垂直居中，我们说下常用的水平垂直居中用到的方法
 
 - absolute + transform
+- absolute + margin
 - line-height + vertical-align
 - flex
 - table
@@ -665,14 +666,29 @@ css中选择器的解析是从右向左的，同时要注意通配选择符`*`�
 
 
 <details>
-<summary>CSS-清除浮动</summary>
+<summary>CSS-flex布局</summary>
 <p>
 
+```css
+.parent {
+  // flex-direction: row(默认) | row-reverse | column | column-reverse
+  // flex-wrap: wrap | nowrap(默认) | wrap-reverse
+  // flex-flow: flex-direction flex-wrap
+  // align-items: flex-start | flex-end | stretch(默认) | baseline | center
+  // justify-content: flex-start(默认) | flex-end | center | space-around | space-between
+  // align-content: flex-start | flex-end | center | space-between | space-around | stretch(默认)
+}
 
-清除浮动更确切的说应该是清除浮动影响，常用的方式有两种：
+.child {
+  // flex-grow: 0或1(默认0)
+  // flex-shrink: 0或1(默认1)
+  // flex-basis: 宽度(默认auto)
+  // flex: flex-grow flex-shrink flex-basis （flex: none 为 flex: 0 0 auto的简写；flex: auto 为 flex: 1 1 auto的简写）
+  // align-self: 与align-items数值相同
+}
+```
 
-- 利用BFC来消除浮动影响
-- 使用`clear`属性来清除浮动影响
+更多详情，请看[这里](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 </p>
 </details>
 
@@ -839,7 +855,7 @@ client
 - `outerWidth`，浏览器宽度
 
 
-Element上扩展的API
+#### Element上扩展的API
 
 - `getClientRects(ele)`，返回一个列表，包含该元素内部所有盒的的信息
 - `getBoundingClientRect`，返回元素所有盒包裹的矩形区域的信息
@@ -903,7 +919,7 @@ worker是一种运行在非主线程上的脚本，SharedWorker与普通worker�
 2. 通过worker.port来获取MessagePort对象（使用该对象进行通信）
 3. port.onmessage可以用来监听接收事件，数据存储在event.data中（data的结构与BroadcastChannel中相同）（注意如果使用addEventListener来添加message监听事件，那么需要使用worker.start()来手动开启，直接使用onmessage属性监听会隐式调用该方法）
 4. 使用postMessage来发送对象
-5. 在worker中同样需要获取各个上下问的port来与之进行通信，port可以在onconnect事件触发的时候从e.ports[0]中进行获取
+5. 在worker中同样需要获取各个上下文的port来与之进行通信，port可以在onconnect事件触发的时候从e.ports[0]中进行获取
 
 这种方法的缺点是兼容性一般，并且有同源限制
 
@@ -977,7 +993,7 @@ csrf全称Cross Site Request Frogrey（跨站请求伪造），利用服务器�
 
 - 对于可以修改的内容的接口使用Restful形式的接口
 - cookie设置为secure和httpOnly
-- 使用refer或者在客户端生成token每次用来校验请求是否合法
+- 利用referer头或者在token每次用来校验请求是否合法
 </p>
 </details>
 
@@ -1099,6 +1115,25 @@ I. 各http版本及功能
   </tbody>
 </table>
 
+HTTPS加入了TLS/SSL层，用于加密传输，TLS握手阶段详解，[原文](http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html)
+
+1. 客户端发出请求。客户端向服务器发出加密通信请求，这被称作ClientHello请求，发送的信息如下
+   - 支持的协议版本，加密方法和压缩方法
+   - 一个客户端生成的随机数，稍后用于生成“对话密钥”
+2. 服务器回应。服务器收到客户端请求后，向客户端发出回应，这叫做ServerHello，发送的信息如下
+   - 确认使用的加密通信协议版本，比如TLS 1.0。如果浏览器和服务器支持的版本不一致，服务器关闭加密通信
+   - 一个服务器生成的随机数，稍后用于生成“对话密钥”
+   - 确认使用的加密方法、如RAS公钥加密
+   - 服务器证书（公钥放入其中）
+3. 客户端回应。客户端收到服务器回应以后，首先验证服务器证书。如果证书不是可信机构颁布、或证书中的域名与实际域名不一致、或者证书已过期，就会向访问者显示一个警告，由其选择是否继续进行通信。如果没问题客户端就会从证书中取出服务器的公钥，然后发送以下信息
+   - premaster secret。根据前两个随机数算出。premaster secret使用服务器公钥加密
+   - 编码改变通知，表示随后的信息都将采用双方约定的加密方法和密钥发送
+   - 客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验
+4. 服务器最后回应。服务器收到客户端的premaster secret之后，计算生成本次会话所用的“会话密钥”。然后，向客户端发送下面的信息。
+   - 编码改变通知，表示随后的信息都将采用双方约定的加密方法和密钥发送
+   - 服务器握手阶段结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验
+
+
 II. http常见状态码
 
 | code | message |
@@ -1154,8 +1189,8 @@ Websocket相比于HTTP常用于保持长连接进行，客户端与服务端需�
 
 - 构造函数WebSocket接收一个字符传作为websocket作为路径
 - 实例拥有onopen、onmessage、onerror、onclose等方法
-- ws. readyState表示状态
-- 使用send发送对象
+- ws.readyState表示状态
+- 使用ws.send(data)发送对象
 </p>
 </details>
 
