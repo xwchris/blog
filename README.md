@@ -1,10 +1,5 @@
-# 基础知识记录
+博客文章整理中..
 
-- [基础知识-Git操作](https://github.com/xwchris/blog/issues/1)
-- [基础知识-CSS](https://github.com/xwchris/blog/issues/6)
-- [基础知识-Javascript(一)](https://github.com/xwchris/blog/issues/2)
-- [基础知识-Javascript(二)](https://github.com/xwchris/blog/issues/3)
+之前写的文章都存在些问题，现在正在整理中，希望完成后能写更多好的文章
 
-# 设计思想学习
-
-# 实践性能研究
+可以访问 [https://xwchris.me](https://xwchris.me)来看更多文章
