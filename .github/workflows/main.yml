@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  issues:
+    types: [opened, edited]
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Sync articles
+      run: |
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          scripts: |
+            cd personal-bench-deploy/data
+            git push
