@@ -18,5 +18,6 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           whoami
+          cd personal-bench-deploy
           ls -al
         
