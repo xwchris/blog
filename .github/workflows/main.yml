@@ -18,6 +18,8 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           whoami
-          cd personal-bench-deploy
-          ls -al
+          cd ~/personal-bench-deploy/data
+          git add .
+          git commit -m "updated data at `date +'%Y-%m-%d %H:%M:%S'`"
+          git push
         
