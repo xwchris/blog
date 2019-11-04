@@ -16,9 +16,5 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
-        script: |
-          cd ~/personal-bench-deploy/data
-          git add .
-          git commit -m "Updated: `date +'%Y-%m-%d %H:%M:%S'`"
-          git push
+        script: whoami
         
