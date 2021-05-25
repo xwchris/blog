@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bba5adb8-33b8-4f3f-9c1e-c6a9db2d4271/deploy-status)](https://app.netlify.com/sites/distracted-lewin-ec3daa/deploys)
+
 # Blog
 该仓库主要用于平时书写技术文章，记录自己的一些想法和学到的东西
 
