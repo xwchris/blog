@@ -1,0 +1,27 @@
+.breadcrumb {
+    margin: 1rem 0;
+    font-size: 16px;
+    color: var(--clr-txt-150);
+}
+
+.breadcrumbItem {
+    position: relative;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.breadcrumbItem:last-of-type {
+    color: var(--clr-txt-100);
+}
+
+.breadcrumbItem:not(:last-of-type):before {
+    color: var(--clr-txt-050);
+    position: absolute;
+    right: -.75rem;
+    content: "/";
+}
+
+.content {
+    font-size: 1rem;
+    line-height: 32px;
+}

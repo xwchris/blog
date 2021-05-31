@@ -1,0 +1,12 @@
+.content {
+  transition: 0.3s ease all;
+  /* background: var(--clr-bg); */
+  padding-right: 4px;
+}
+
+@media screen and (min-width: 882px) {
+    .content {
+        padding-left: calc((100% - 882px) / 2);
+        padding-right: calc((100% - 866px) / 2);
+    }
+}
