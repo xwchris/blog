@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import markdownStyles from './markdown.module.css'
 import Date from '../date'
+import Link from 'next/link';
 
 const components = {
     code({ node, inline, className, children, ...props }) {
@@ -28,8 +29,10 @@ const Detail = ({ data }) => {
     return (
         <div>
             <ol className={styles.breadcrumb}>
-                <li className={styles.breadcrumbItem}>Home</li>
-                <li className={cs(styles.breadcrumbItem, styles.active)}>{title}</li>
+                <Link href="/">
+                    <li className={styles.breadcrumbItem}>Home</li>
+                </Link>
+                <li className={styles.breadcrumbItem}>{title}</li>
             </ol>
             <div className={cardStyles.card}>
                 <div className={cardStyles.cardTop}>

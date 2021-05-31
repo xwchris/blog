@@ -8,10 +8,19 @@
     position: relative;
     display: inline-block;
     margin-right: 1rem;
+    cursor: pointer;
+}
+
+.breadcrumbItem:hover {
+    text-decoration: underline;
 }
 
 .breadcrumbItem:last-of-type {
     color: var(--clr-txt-100);
+    cursor: none;
+}
+.breadcrumbItem:last-of-type:hover {
+    text-decoration: none;
 }
 
 .breadcrumbItem:not(:last-of-type):before {
