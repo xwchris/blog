@@ -13,7 +13,7 @@ const components = {
     code({ node, inline, className, children, ...props }) {
         const match = /language-(\w+)/.exec(className || '')
         return !inline && match ? (
-            <SyntaxHighlighter style={tomorrow} language={match[1]} children={String(children).replace(/\n$/, '')} {...props} />
+            <SyntaxHighlighter style={tomorrow} lang={match[1].replace(/^\w/, a => a.toUpperCase())} language={match[1]} children={String(children).replace(/\n$/, '')} {...props} />
         ) : (
             <code className={className} {...props}>
                 {String(children).replace(/\n$/, '')}
@@ -24,7 +24,7 @@ const components = {
 
 
 const Detail = ({ data }) => {
-    const { id, title, date, content } = data
+    const { id, title, date, content, author, tags } = data
     
     return (
         <div>
@@ -40,7 +40,13 @@ const Detail = ({ data }) => {
                         <h3 className={cardStyles.cardTitle}>
                             {title}
                         </h3>
-                        <div className={cardStyles.cardTag}>{date}</div>
+                        <div className={cardStyles.cardTag}>
+                            <span>{author}</span>
+                            {" · "}
+                            <Date dateString={date} />
+                            {" · "}
+                            <span>{tags}</span>
+                        </div>
                     </div>
                 </div>
                 <div className={cardStyles.cardDesc}>

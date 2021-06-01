@@ -26,9 +26,9 @@
 .markdown h2 {
   font-size: 1.4em;
   margin: 40px 10px 20px 0;
-  padding-left: 9px;
+  /* padding-left: 9px; */
   /* border-left: 6px solid #ff7e79; */
-  border-left: 6px solid rgba(0, 0, 0, .84);
+  /* border-left: 6px solid rgba(0, 0, 0, .84); */
   font-weight: 700;
   line-height: 1.4;
 }
@@ -170,11 +170,26 @@
   border-radius: 4px;
   /* display: block; */
   /* background: #f8f8f8; */
-  /* padding: 10px 20px; */
+  padding: 1rem .875rem;
   /* border: none; */
-  /* margin-bottom: 25px; */
+  margin-bottom: 25px;
   /* color: #666; */
   /* font-family: Courier, sans-serif; */
+}
+
+.markdown pre[lang]::before {
+  content: attr(lang);
+  /* background-color: red; */
+  font-size: inherit;
+  color: var(--clr-txt-100);
+  display: block;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.markdown pre > pre {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .markdown code {

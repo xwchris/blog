@@ -5,7 +5,8 @@ import styles from './index.module.css'
 import IconStyles from '../../styles/icon.module.css'
 
 const ListItem = ({ data }) => {
-    const { id, title, date } = data;
+    const { id, title, date, desc } = data;
+    console.log(data)
     return (
         <li className={styles.card}>
             <div className={styles.cardTop}>
@@ -20,7 +21,7 @@ const ListItem = ({ data }) => {
                 </div>
             </div>
             <div className={styles.cardDesc}>
-                <p>JavaScript provides a handful of ways to iterate over data. While array methods are usually preferred, there are cases where a JavaScript provides a handful of ways to iterate over data. While array methods are usually preferred, there are cases where a </p>
+                <p>{desc}</p>
             </div>
         </li>
     )
