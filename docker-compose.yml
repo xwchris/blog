@@ -1,18 +1,19 @@
 # https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 version: '3'
 
-https-portal:
-  image: steveltn/https-portal:1
-  ports:
-    - '80:80'
-    - '443:443'
-  restart: always
-  environment:
-    DOMAINS: 'overfronted.net -> http://127.0.0.1:3000'
-    # STAGE: 'production' # Don't use production until staging works
-    # FORCE_RENEW: 'true'
-  volumes: 
-    - https-portal-data:/var/lib/https-portal
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+    environment:
+      DOMAINS: 'overfronted.net -> http://127.0.0.1:3000'
+      # STAGE: 'production' # Don't use production until staging works
+      # FORCE_RENEW: 'true'
+    volumes: 
+      - https-portal-data:/var/lib/https-portal
 # services:
 #   nginx:
 #     image: nginx:1.15-alpine
