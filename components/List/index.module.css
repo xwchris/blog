@@ -2,14 +2,13 @@
    font-weight: 500;
     -webkit-font-smoothing: antialiased;
     line-height: 3rem;
-    margin: 0 0.875rem;
+    margin: 24px 0;
     font-size: 32px;
-    margin-bottom: 24px;
     color: var(--clr-txt-200);
 }
 
 .title:first-child {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .viewAll {
