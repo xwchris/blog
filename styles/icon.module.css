@@ -13,7 +13,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* 
+
+
 .icon.icon-blog:before {
   content: "\f101";
 }
@@ -88,7 +89,7 @@
 }
 .icon.icon-twitter:before {
   content: "\f119";
-} */
+}
 
 .iconJs {
     background: #f6d854;

@@ -7,7 +7,7 @@ const List = ({ data }) => {
     return (
         <div className={styles.container}>
             <div className={styles.titleBlock}>
-                <h2 className={styles.title}>Latest Articles</h2>
+                <h2 className={styles.title}>最新文章</h2>
             </div>
             <ul className={styles.list}>
                 {

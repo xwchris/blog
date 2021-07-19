@@ -30,17 +30,17 @@ const Detail = ({ data }) => {
         <div>
             <ol className={styles.breadcrumb}>
                 <Link href="/">
-                    <li className={styles.breadcrumbItem}>Home</li>
+                    <li className={styles.breadcrumbItem}>文章列表</li>
                 </Link>
                 <li className={styles.breadcrumbItem}>{title}</li>
             </ol>
             <div className={cardStyles.card}>
                 <div className={cardStyles.cardTop}>
-                    <div className={cardStyles.cardData}>
+                    <div className={cs(cardStyles.cardData, styles.cardData)}>
                         <h3 className={cardStyles.cardTitle}>
                             {title}
                         </h3>
-                        <div className={cardStyles.cardTag}>
+                        <div className={cs(cardStyles.cardTag, styles.cardTag)}>
                             <span>{author}</span>
                             {" · "}
                             <Date dateString={date} />

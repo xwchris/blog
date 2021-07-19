@@ -34,3 +34,11 @@
     font-size: 1rem;
     line-height: 32px;
 }
+
+.cardData {
+    margin: 0;
+}
+
+.cardTag {
+    margin-top: 8px;
+}
