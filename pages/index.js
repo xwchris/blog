@@ -7,7 +7,7 @@ export default function Home({ allPostsData }) {
   return (
     <Layout>
       <Head>
-        <title>title</title>
+        <title>overfronted</title>
       </Head>
       <List data={allPostsData} />
     </Layout>
