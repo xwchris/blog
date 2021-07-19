@@ -1,7 +1,7 @@
 ---
 title: "真正认识Generator"
-date: "2021-05-01"
-tags: javascript, 前端
+date: "2020-04-01"
+tags: js, 前端
 author: xwchris
 desc: "这篇文章旨在帮你真正了解Generator，文章较长，不过如果能花时间耐心看完，相信你已经能够完全理解generator"
 ---
