@@ -4,7 +4,7 @@
 
 .markdown {
   font-size: 1rem;
-  color: var(--clr-txt-100);
+  /* color: var(--clr-txt-100); */
   /* font-family: Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "tohoma,sans-serif";
   margin: 0; */
 }
@@ -78,8 +78,9 @@
 .markdown ul {
   margin-top: 12px;
   margin-bottom: 20px;
-  padding-left: 5%;
+  padding-left: 16px;
   line-height: 1.8;
+  list-style: unset;
 }
 
 .markdown p {
@@ -197,6 +198,7 @@
   background: var(--clr-code-bg);
   /* padding: .125rem .375rem; */
   border-radius: 4px;
+  margin: 0 8px;
   /* color: #c7254e;
   background-color: #f9f2f4;
   border-radius: 4px;
@@ -315,4 +317,11 @@
 .markdown a:target {
   border: 0;
   outline: 0;
+}
+
+.dark code {
+  background-color: white !important;
+}
+.dark pre {
+  background-color: white !important;
 }

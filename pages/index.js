@@ -5,12 +5,14 @@ import List from '../components/List'
 
 export default function Home({ allPostsData }) {
   return (
-    <Layout>
-      <Head>
-        <title>overfronted</title>
-      </Head>
-      <List data={allPostsData} />
-    </Layout>
+    <div className="bg-white dark:bg-slate-800 dark:text-white transition">
+      <Layout>
+        <Head>
+          <title>overfronted</title>
+        </Head>
+        <List data={allPostsData} />
+      </Layout>
+    </div>
   )
 }
 
