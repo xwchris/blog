@@ -5,12 +5,14 @@ import Detail from '../../components/Detail'
 
 export default function Post({ postData }) {
   return (
-    <Layout>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <Detail data={postData} />
-    </Layout>
+    <div className="bg-white dark:bg-slate-800 dark:text-white transition">
+      <Layout>
+        <Head>
+          <title>{postData.title}</title>
+        </Head>
+        <Detail data={postData} />
+      </Layout>
+    </div>
   )
 }
 
